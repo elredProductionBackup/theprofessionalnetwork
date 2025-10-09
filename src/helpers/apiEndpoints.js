@@ -1,0 +1,15 @@
+export const API = {
+  LOGIN: "userPortalAdminSendOTP",
+  VERIFY_LOGIN: "userPortalAdminVerifyOTP",
+  ALL_USERS: "userPortalAdminFetchMyselfUsers",
+  BASIC_DETAILS: "userPortalAdminFetchBasicUserDetails",
+  USER_DETAILS: "userPortalAdminFetchUserDetails",
+  USER_PROFILE_DETAILS: "userPortalAdminFetchUserProfileDetails",
+  USER_BIO: "userPortalAdminFetchUserBioDetails",
+  USER_AWARDS: "userPortalAdminFetchUserAwards",
+  USER_EDUCATION_DETAILS: "userPortalAdminFetchUserEducationDetails",
+  USER_COMPANY_DETAILS: "userPortalAdminFetchUserCompanyDetails",
+  ALL_FEEDBACKS: "userPortalAdminGetFeedback",
+  GET_ADD_NETWORK_REQUESTS: "userportalAdminAddToNetworkRequestGet",
+  PUT_ADD_NETWORK_REQUESTS: "userportalAdminAddToNetworkRequestPut",
+};

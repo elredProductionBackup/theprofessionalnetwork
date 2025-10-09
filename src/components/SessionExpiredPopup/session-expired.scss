@@ -1,0 +1,72 @@
+.session-expired-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+
+  .session-expired-popup-body {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    width: 310px;
+    z-index: 1001;
+
+    .session-expired-popup-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      .session-expired-icon-top {
+        height: 60px;
+        width: 60px;
+        user-select: none;
+      }
+
+      .session-expired-header-text {
+        margin: 12px 0 15px 0;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 22px;
+        color: #e72d38;
+      }
+
+      .session-expired-sub-text {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        margin-bottom: 16px;
+        color: #686868;
+      }
+
+      .session-expired-logout-btn-red {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        background-color: #e72d38;
+        border-radius: 100px;
+        width: 128px;
+        height: 32px;
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}

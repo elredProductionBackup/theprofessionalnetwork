@@ -1,0 +1,25 @@
+.no-gamification-container {
+    width: 100%;
+
+    .no-gamification-inner {
+        padding: 11px 16px;
+        background-color: #FCF3CF;
+        color: #7D6608;
+        margin: 0 0 20px 0;
+        border: 1px solid #FFE990;
+        border-radius: 2px;
+
+        .no-gamification-exclaim-icon {
+            margin-top: -2px;
+            font-size: 16px;
+            margin-right: 4px;
+        }
+
+        .no-gamification-text{
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 25px;
+            letter-spacing: 0px;
+        }
+    }
+}

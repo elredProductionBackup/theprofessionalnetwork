@@ -1,0 +1,16 @@
+.feedback-table-stars-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  .feedback-table-star {
+    height: 12px;
+    width: 12px;
+
+    .feedback-table-star-img {
+      height: 12px;
+      width: 12px;
+    }
+  }
+}

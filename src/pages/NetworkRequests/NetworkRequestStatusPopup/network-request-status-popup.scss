@@ -1,0 +1,177 @@
+.network-request-status-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+
+  .network-request-status-popup-body {
+    background-color: white;
+    padding: 20px 25px;
+    border-radius: 8px;
+    width: 310px;
+    z-index: 1001;
+
+    .network-requests-confirm-action-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      .network-requests-confirm-action-text-top {
+        text-align: center;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 22px;
+        margin-bottom: 20px;
+        color: #686868;
+
+        .network-requests-confirm-action-name {
+          color: #000;
+          font-weight: 600;
+        }
+      }
+
+      .network-requests-confirm-action-btn-group {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        .network-requests-confirm-action-btn-add {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #37b25a;
+          border-radius: 100px;
+          width: 120px;
+          height: 28px;
+          color: #fff;
+          font-size: 12px;
+          line-height: 12px;
+          font-weight: 500;
+          user-select: none;
+
+          .network-requests-confirm-action-btn-spinner-loader {
+            height: 14px !important;
+            width: 14px !important;
+            border-width: 2px !important;
+          }
+        }
+
+        .network-requests-confirm-action-btn-reject {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #e72d38;
+          border-radius: 100px;
+          width: 120px;
+          height: 28px;
+          color: #fff;
+          font-size: 12px;
+          line-height: 12px;
+          font-weight: 500;
+          user-select: none;
+
+          .network-requests-confirm-action-btn-spinner-loader {
+            height: 14px !important;
+            width: 14px !important;
+            border-width: 2px !important;
+          }
+        }
+
+        .network-requests-confirm-action-btn-cancel {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #fff;
+          border: 1px solid #e72d38;
+          border-radius: 100px;
+          width: 120px;
+          height: 28px;
+          color: #e72d38;
+          font-size: 12px;
+          line-height: 12px;
+          font-weight: 500;
+          user-select: none;
+        }
+
+        .cursor-pointer {
+          cursor: pointer;
+        }
+
+        .cursor-default {
+          cursor: default;
+        }
+      }
+    }
+
+    .network-requests-action-response-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      .network-requests-action-response-icon-top {
+        height: 60px;
+        width: 60px;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .network-requests-action-response-text {
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 500;
+        color: #686868;
+        text-align: center;
+        margin: 20px 0 16px 0;
+
+        .network-requests-action-response-name {
+          font-size: 600;
+          color: #000;
+        }
+      }
+
+      .network-requests-action-response-close-btn-green {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border: 1px solid #37b25a;
+        border-radius: 100px;
+        width: 120px;
+        height: 28px;
+        color: #37b25a;
+        font-size: 12px;
+        line-height: 12px;
+        font-weight: 500;
+        user-select: none;
+        cursor: pointer;
+      }
+
+      .network-requests-action-response-close-btn-red {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        border: 1px solid #e72d38;
+        border-radius: 100px;
+        width: 120px;
+        height: 28px;
+        color: #e72d38;
+        font-size: 12px;
+        line-height: 12px;
+        font-weight: 500;
+        user-select: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

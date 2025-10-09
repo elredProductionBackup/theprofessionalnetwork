@@ -1,0 +1,95 @@
+.educationDetails {
+  border-radius: 5px;
+  border: 1px solid #a9a9a9;
+  padding: 20px 20px;
+  width: 48.5%;
+  position: relative;
+  padding-top: 25px;
+
+  #icon_pinned_hidden {
+    position: absolute;
+    top: 9px;
+    right: 11px;
+  }
+
+  .educationInfo {
+    display: flex; 
+    .educationInfoChild {
+      display: flex;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .blueTick-edu {
+      margin-left: 10px;
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+      margin-top: 2px;
+    }
+  }
+
+  .eduDetails {
+    display: flex;
+    margin: 20px 0 20px 0;
+  }
+
+  .eName {
+    color: var(--G3, #686868);
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-left: 3px;
+    @media only screen and (max-width: 1300px) {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 80px;
+    }
+  }
+
+  .eName-ellipsis-institute {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 34vw;
+  }
+
+  .eName-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 9vw;
+  }
+
+  .eName-ellipsis-studies {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 6.5vw;
+
+    @media only screen and (max-width: 1300px) {
+      max-width: 5vw;
+    }
+  }
+
+  .educationName {
+    color: #000;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .dateContainer {
+    display: flex;
+  }
+  .certificateEducation {
+    margin-right: 13px;
+    cursor: pointer;
+  }
+}

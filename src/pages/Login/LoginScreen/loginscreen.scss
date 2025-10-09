@@ -1,0 +1,156 @@
+.login_screen {
+  min-height: 262px;
+  width: 313px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0 22px;
+  padding-bottom: 22px;
+
+  .title {
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    padding-top: 22px;
+    margin-bottom: 8px;
+  }
+
+  // input {
+  //   margin-top: 16px;
+  //   height: 60px;
+  //   border-radius: 5px;
+  //   width: 100%;
+  //   padding: 0 16px;
+  //   outline: none;
+  //   border: 1px solid #d8d8d8;
+  // }
+  .email_input,
+  .invalid_email_input {
+    margin-top: 16px;
+    height: 60px;
+    border-radius: 5px;
+    width: 100%;
+    padding: 0 16px;
+    outline: none;
+    color: rgba(147, 147, 147, 1);
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.4);
+    }
+  }
+  .email_input {
+    border: 1px solid #d8d8d8;
+  }
+  .invalid_email_input {
+    border: 2px solid rgba(231, 45, 56, 0.6);
+  }
+
+  .error_msg {
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 500;
+    color: #e72d38;
+  }
+
+  .otp_verify {
+    text-align: right;
+    input {
+      // margin-bottom: 12px;
+      color: rgba(147, 147, 147, 1);
+      
+      &::placeholder {
+        color: rgba(0, 0, 0, 0.4);
+      }
+    }
+    .otp_verify_resend {
+      margin-top: 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #df000d;
+      cursor: pointer;
+      line-height: 1 !important;
+      white-space: nowrap;
+    }
+
+    .otp_resend_timer_container {
+      margin-top: 12px;
+      white-space: nowrap;
+      line-height: 1 !important;
+
+      .otp_resend_in {
+        font-weight: 400;
+        font-size: 13px;
+        color: #939393;
+      }
+
+      .otp_resend_timer {
+        font-weight: 600;
+        font-size: 13px;
+        color: #3c3c3c;
+      }
+    }
+
+    .otp_limit_error,
+    .input_bottom_msg,
+    .no_err_msg {
+      display: flex;
+      align-items: center;
+
+      .err_msg {
+        font-size: 12px;
+        font-weight: 500;
+        text-align: left;
+        color: #e72d38;
+        margin-top: 10px;
+      }
+    }
+    .input_bottom_msg {
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .no_err_msg {
+      justify-content: right;
+    }
+    .otp_limit_error {
+      justify-content: flex-start;
+      text-align: start;
+    }
+  }
+
+  .otp_txt {
+    font-size: 12px;
+    font-weight: 400;
+    color: #939393;
+    text-align: center;
+    margin-top: 36px;
+    margin-bottom: 13px;
+  }
+
+  .submit_btn {
+    width: 100%;
+    margin-top: 26px;
+    height: 44px;
+    background-color: #df000d;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+  }
+  .get_otp_btn {
+    width: 100%;
+    height: 44px;
+    background-color: #df000d;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+  }
+}
+
+.submit-button-thin-border {
+  border-width: 2px !important;
+}

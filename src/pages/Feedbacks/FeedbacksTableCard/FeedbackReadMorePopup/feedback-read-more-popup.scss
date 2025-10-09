@@ -1,0 +1,119 @@
+.read-more-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.read-more-popup-body {
+  background-color: white;
+  border-radius: 8px;
+  width: 550px;
+  max-height: 460px;
+  z-index: 1001;
+
+  .read-more-popup-header-container {
+    display: flex;
+    height: 65px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    .read-more-popup-header-name-screen-name {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px 10px 20px;
+      width: 484px;
+
+      .read-more-popup-name {
+        display: inline-block;
+        color: #262626;
+        font-weight: 500;
+        font-size: 18px;
+        // line-height: 1;
+        // margin-bottom: 10px;
+        margin-left: 33px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 460px;
+      }
+
+      .read-more-popup-screen-name {
+        display: inline-block;
+        color: #686868;
+        font-weight: 500;
+        font-size: 14px;
+        // line-height: 1;
+        margin-left: 33px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 460px;
+      }
+    }
+
+    .read-more-popup-cross-container {
+      display: flex;
+      width: 66px;
+      align-items: center;
+      justify-content: flex-end;
+
+      .read-more-popup-cross {
+        height: 16px;
+        width: 16px;
+        margin-right: 28px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .read-more-popup-feedback-text-section {
+    display: flex;
+    padding: 20px 16px 20px 20px;
+    min-height: 280px;
+    max-height: 396px;
+    width: 550px;
+
+    .read-more-popup-feedback-text {
+      display: inline-block;
+      white-space: normal;
+      overflow-y: auto;
+      padding-right: 12px;
+      color: #000;
+      font-size: 14px;
+      line-height: 24px;
+
+      /* For WebKit browsers (Chrome, Safari, etc.) */
+      &::-webkit-scrollbar {
+        width: 4px;
+        border-radius: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #d9d9d9;
+        border-radius: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #d9d9d9;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: #ffffff;
+        border-radius: 5px;
+      }
+
+      &::-webkit-scrollbar-track:hover {
+        background-color: #ffffff;
+      }
+    }
+  }
+}

@@ -1,0 +1,137 @@
+.aboutMeDesc {
+    color: #262626;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+   width: 100%;
+   word-break: break-word;
+}
+
+.pdfName {
+    cursor: pointer;
+    color: #000;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    text-decoration-line: underline;
+    margin-top: 10px;
+}
+
+.pdfContainer {
+    display: flex;
+    flex-direction: column;
+    height: 115px;
+    width: 280px;
+    border-radius: 5px;
+    align-self: center;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.show-img-loader-resume {
+    display: block !important;
+    height: 80px;
+    width: 80px;
+    cursor: pointer;
+}
+
+.hide-img-loader {
+    display: none !important;
+}
+
+.card-about {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.card-header-about {
+    border-radius: 5px 5px 0 0;
+    background-color: #fff;
+    display: flex;
+    padding: 20px 19px 20px 19px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+.card-body-about {
+    display: flex;
+    // justify-content: flex-start;
+    // gap: 92px;
+    // align-items: center;
+    padding: 20px 0 16px 20px;
+
+    .No-bio-data-available {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 365px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        color: #262626;
+
+        .no-about-inner {
+            margin-left: 52.5%;
+        }
+    }
+
+    .bio-spinner-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 365px;
+        width: 100%;
+  
+        .bio-spinner-loader {
+          height: 30px;
+          width: 30px;
+        }
+    }
+}
+
+.no-pdf-container {
+    display: flex;
+    flex-direction: column;
+    height: 115px;
+    width: 280px;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+
+    .no-resume-added-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 6px;
+        background: #E6E6E6;
+    }
+
+    .no-resume-text {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0px;
+        color: #000;
+        font-style: normal;
+        margin-top: 10px;
+    }
+}
+
+.card-title-about {
+    color: #000;
+    font-family: Roboto;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.skeleton-resume-top {
+    margin-top: -4px;
+}

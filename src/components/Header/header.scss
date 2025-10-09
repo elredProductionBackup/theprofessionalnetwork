@@ -1,0 +1,47 @@
+.page-headers-wrapper {
+   // padding-top: 20px;
+    img {
+        margin-right: 11px;
+        width: 16px;
+        height: 14px;
+        margin-top: 4px;
+        cursor: pointer;
+    }
+
+    .profile-title-text {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        position: relative;
+        margin-bottom: 6px;
+        line-height: 24px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
+    .breadcrumb {
+        font-size: 12px;
+        padding-left: 0 !important;
+        margin-left: 28px;
+        .breadcrumb-item {
+            .subTitle {
+                color: #000;
+                font-family: Roboto;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24.2px;
+            }
+            .HeadTitleHeading {
+                color: #000;
+                font-family: Roboto;
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 24.2px;
+            }
+        }
+        .breadcrumb-item::before {
+            margin-top: 3px;
+        }
+    }
+}

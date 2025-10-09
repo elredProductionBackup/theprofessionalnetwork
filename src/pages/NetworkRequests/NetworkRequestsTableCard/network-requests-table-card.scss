@@ -1,0 +1,304 @@
+.network-requests-table-card-container-new {
+  padding: 15px 20px 20px 20px;
+
+  .network-requests-table-card-inner-new {
+    position: relative;
+    width: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    background-clip: border-box;
+
+    .network-requests-table-card-header-new {
+      display: flex;
+      justify-content: space-between;
+      background: none;
+      padding: 1rem 0;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-align: center;
+      align-items: center;
+      margin-bottom: 0;
+
+      .network-requests-table-card-title-left {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+
+        .network-requests-table-card-title-left-img {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+          width: 30px;
+          font-size: 30px;
+          color: #fff;
+          background: linear-gradient(90deg, #736bd0 0%, #9892dc 100%);
+          box-shadow: 0px 4px 15px 0px #7c75d347;
+          border-radius: 20px;
+
+          img {
+            height: 18px;
+            width: 18px;
+          }
+        }
+
+        .network-requests-table-card-title-left-text {
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 23px;
+          letter-spacing: 0px;
+          text-align: left;
+        }
+      }
+
+      .network-requests-table-card-title-right {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 24.2px;
+        color: #df000d;
+      }
+    }
+
+    .network-requests-table-card-body-new {
+      //   -ms-flex: 1 1 auto;
+      //   flex: 1 1 auto;
+      margin: 0;
+      position: relative;
+      padding: 25px;
+      font-size: 14px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 3px 9px 0 rgba(169, 184, 200, 0.15);
+
+      .network-requests-table-table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+
+        .network-requests-table-spinner-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 480px;
+          border: 1px solid #eaedf1 !important;
+          margin-bottom: 1rem;
+          margin-top: -1rem;
+
+          .network-requests-table-spinner-loader {
+            height: 35px;
+            width: 35px;
+          }
+
+          .no-network-requests-found-text {
+            font-size: 14px;
+            letter-spacing: 0em;
+            color: #262626;
+          }
+        }
+
+        .network-requests-table-table {
+          white-space: nowrap !important;
+          border: 1px solid #eaedf1 !important;
+          padding: 0.75rem;
+          vertical-align: top;
+          width: 100%;
+          max-width: 100%;
+          margin-bottom: 1rem;
+          border-collapse: collapse !important;
+          caption-side: bottom;
+
+          .network-requests-table-table-head {
+            vertical-align: bottom;
+
+            .network-requests-table-table-head-row-new {
+              border-width: 1px 0;
+              border-top: 1px solid #eaedf1 !important;
+              background: #eae8f0;
+
+              .network-requests-table-table-text-header-new {
+                font-weight: 600 !important;
+                transition: none !important;
+                -webkit-transition: none !important;
+                padding: 0.75rem;
+                color: #000000;
+                font-size: 12px;
+                border: 1px solid #eaedf1;
+                text-align: center;
+                line-height: 25px;
+              }
+
+              .network-requests-table-header-first {
+                min-width: 1%;
+                width: 303px;
+
+                @media only screen and (max-width: 1340px) {
+                  width: 238px;
+                }
+              }
+
+              .network-requests-table-header-second {
+                min-width: 1%;
+                width: 18%;
+              }
+
+              .network-requests-table-header-third {
+                min-width: 1%;
+                // width: 30%;
+              }
+
+              .network-requests-table-header-fourth {
+                min-width: 1%;
+                width: 110px;
+              }
+
+              .network-requests-table-header-fifth {
+                min-width: 1%;
+                width: 193px;
+              }
+            }
+          }
+
+          .network-requests-table-table-center {
+            text-align: center;
+          }
+
+          .network-requests-table-table-data {
+            position: relative;
+            padding: 10px;
+            border: 1px solid #eaedf1;
+            height: 48px;
+          }
+
+          .network-requests-table-table-data-name-container {
+            display: flex;
+            border: 1px solid transparent;
+            border-bottom: 1px solid #eaedf1;
+            margin-bottom: -1px;
+            align-items: center;
+            width: 100%;
+
+            .network-requests-table-table-name {
+              font-size: 10px;
+              font-weight: 600;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              width: 280px;
+
+              @media only screen and (max-width: 1340px) {
+                width: 215px;
+              }
+            }
+          }
+
+          .network-requests-table-table-data-email {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 10px;
+          }
+
+          .network-requests-table-table-data-organisation {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 10px;
+          }
+
+          .network-requests-table-table-phone-number {
+            font-size: 10px;
+            font-weight: 600;
+          }
+
+          .network-requests-table-table-status {
+            font-size: 10px;
+            font-weight: 600;
+
+            .network-requests-status-rejected {
+              color: #e72d38;
+            }
+
+            .network-requests-status-added {
+              color: #37b25a;
+            }
+
+            .network-requests-action-btn-group {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+
+              .network-requests-add-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #37b25a;
+                height: 20px;
+                width: 80px;
+                color: #fff;
+                border-radius: 100px;
+                line-height: 1;
+                font-weight: 500;
+                cursor: pointer;
+              }
+
+              .network-requests-reject-btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #e72d38;
+                height: 20px;
+                width: 80px;
+                color: #fff;
+                border-radius: 100px;
+                line-height: 1;
+                font-weight: 500;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+
+      .network-requests-table-empty-bottom {
+        height: 41px;
+      }
+
+      .network-requests-table-card-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .network-requests-table-card-bottom-left {
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+
+      @media (max-width: 819px) {
+        .network-requests-table-card-bottom {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          margin-top: 10px;
+
+          .network-requests-table-card-bottom-left {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+}

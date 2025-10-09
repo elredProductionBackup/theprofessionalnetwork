@@ -1,0 +1,129 @@
+$Gray: #262626;
+$G3: #686868;
+
+.awardcard {
+  border-radius: 5px;
+  border: 1px solid #a9a9a9;
+  padding: 20px 20px;
+  width: 48.5%;
+  position: relative;
+  padding-top: 25px;
+
+  #icon_pinned_hidden {
+    position: absolute;
+    top: 9px;
+    right: 11px;
+  }
+}
+
+.awardIcon {
+  width: 44px;
+  height: 42.24px;
+  flex-shrink: 0;
+  margin-right: 25px;
+  margin-top: -10px;
+}
+
+.award-icon-shimmer {
+  width: 44px;
+  height: 42.24px;
+  flex-shrink: 0;
+  margin-right: 25px;
+  margin-top: -14px;
+}
+
+.title,
+.titleNext {
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: #000;
+}
+
+.titleNext {
+  color: #{$G3};
+}
+
+.title-award-data {
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 24vw;
+}
+
+.certificateText {
+  color: #000;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.certificateImage {
+  margin: 0 10px 0 0px;
+  width: 39.104px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.certificate-icon-shimmer {
+  margin: 0 10px 0 0px;
+  width: 39.104px;
+  height: 30px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  margin-top: -3.5px;
+}
+
+.awardParagraph {
+  color: var(--Gray, #{$Gray});
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  margin-top: 13px;
+  width: 100%;
+  word-break: break-word;
+}
+
+.blueTick {
+  margin-left: 10px;
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+}
+
+.awardmain {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+}
+
+.dateAwardContainer {
+  margin-left: auto;
+  margin-bottom: 10px;
+}
+
+.container-no-certificate {
+  margin-bottom: 40px;
+}
+
+.AwardTitleInfo{
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}

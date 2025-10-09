@@ -1,0 +1,121 @@
+.search-page-table-pagination {
+  margin-bottom: 0.5rem;
+  float: right;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  font-size: 12px;
+  user-select: none;
+  font-weight: 500;
+
+  .search-page-table-page-item:hover {
+    color: #6259ca;
+    background-color: rgb(98 89 202 / 10%);
+  }
+
+  .search-page-table-page-item {
+    cursor: pointer;
+    background-color: #fff;
+    color: #0d0c22;
+
+    .search-page-table-page-link {
+      position: relative;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      line-height: 1.25;
+      border-top: 1px solid #eaedf1;
+      border-bottom: 1px solid #eaedf1;
+      border-left: 1px solid #eaedf1;
+    }
+  }
+
+  .search-page-table-page-dots {
+    cursor: default;
+    background-color: #fff;
+    color: #0d0c22;
+
+    .search-page-table-page-link {
+      position: relative;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      line-height: 1.25;
+      border-top: 1px solid #eaedf1;
+      border-bottom: 1px solid #eaedf1;
+      border-left: 1px solid #eaedf1;
+    }
+  }
+
+  .search-page-table-next {
+    border: 1px solid #eaedf1;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    background-color: #fff;
+    color: #0d0c22;
+
+    .search-page-table-page-link {
+      position: relative;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      line-height: 1.25;
+    }
+  }
+
+  .search-page-table-next:hover {
+    color: #6259ca;
+    background-color: rgb(98 89 202 / 10%);
+  }
+
+  .search-page-table-prev {
+    border-top: 1px solid #eaedf1;
+    border-bottom: 1px solid #eaedf1;
+    border-left: 1px solid #eaedf1;
+    border-radius: 3px 0 0 3px;
+    cursor: pointer;
+    background-color: #fff;
+    color: #0d0c22;
+
+    .search-page-table-page-link {
+      position: relative;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      line-height: 1.25;
+    }
+  }
+
+  .search-page-table-prev:hover {
+    color: #6259ca;
+    background-color: rgb(98 89 202 / 10%);
+  }
+
+  .search-page-table-disabled {
+    color: #d3d3d3;
+    opacity: 0.8;
+    cursor: default;
+    background-color: #fff !important;
+  }
+
+  .search-page-table-disabled:hover {
+    color: #d3d3d3;
+    opacity: 0.8;
+    cursor: default;
+    background-color: #fff !important;
+  }
+
+  .search-page-table-active {
+    color: #fff;
+    background-color: #6259ca;
+    border-color: #6259ca;
+    margin-left: -1px;
+  }
+
+  .search-page-table-active:hover {
+    color: #fff;
+    background-color: #6259ca;
+    border-color: #6259ca;
+    margin-left: -1px;
+  }
+}
+
+.empty-search-table-pagination {
+  height: 41px;
+}

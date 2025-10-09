@@ -1,0 +1,33 @@
+.companyContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 19px;
+    flex-direction: row;
+    padding: 20px 0px 0px 20px;
+    // justify-content: center;
+
+    .no-company-data-found {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: center;
+        width: 100%;
+        margin-top: 211px;
+        padding-bottom: 277px;
+    } 
+
+    .company-details-spinner-container {
+        display: flex;
+        height: 512px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;;
+
+        .company-details-spinner-loader {
+            height: 30px;
+            width: 30px;
+            margin-top: -80px;
+        }
+    }
+}

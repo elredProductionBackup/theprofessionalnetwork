@@ -1,0 +1,153 @@
+.bio-modal {
+    display: block;
+
+}
+
+.modal {
+    backdrop-filter: brightness(.5) !important;
+    height: 100vh;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    // ::-webkit-scrollbar {
+    //     width: 3px;
+    //   }
+
+    //   ::-webkit-scrollbar-thumb {
+    //     background: rgba(0, 0, 0, 0.2);
+    //     border-radius: 10px;
+    //   }
+}
+
+body.modal {
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.modal-content {
+    width: 820px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+}
+
+#modal-content-bio {
+    width: 820px !important;
+}
+
+.modal-main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 20px;
+}
+
+.modal-main-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 500px;
+}
+
+.modal-title-bio {
+    color: var(--Gray, #262626);
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    /* 125% */
+    margin: 0 auto;
+    padding-left: 75px;
+}
+
+.modal-title-bio-no-download {
+    color: var(--Gray, #262626);
+    font-family: Roboto;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    margin: 0 auto;
+    padding-left: 25px;
+}
+
+.bio-modal-download {
+    width: 32.043px;
+    height: 32px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.bio-modal-cross {
+    width: 22.043px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.certificate-modal {
+    width: 100%;
+}
+
+.resume-modal {
+    width: 100%;
+}
+
+.dialouge-modal {
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    display: flex;
+    min-height: calc(100% - var(--bs-modal-margin)*2);
+    width: 550px;
+}
+
+.content-scroll {
+    max-height: 471px;
+    overflow-y: auto;
+    /* Firefox */
+    @supports (-moz-appearance: none) {
+        scrollbar-width: none;
+    }
+}
+
+.user-dp-content-scroll {
+    max-height: 500px;
+    overflow-y: auto;
+    @supports (-moz-appearance: none) {
+        scrollbar-width: thin;
+    }
+}
+
+.no-certificate-available {
+    color: #686868;
+}
+
+.hide-img-in-modal {
+    display: none;
+}
+
+.user-dp-name {
+    color: var(--Gray, #262626);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    height: 100%;
+    max-width: 450px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-picture-img {
+    height: 500px;
+    width: 490px;
+    object-fit: contain;
+}
+
+.dialouge-modal {
+    min-height: 0 !important;
+}

@@ -1,0 +1,47 @@
+.dark-data-copy-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    .data-wrapper {
+        color: rgba(255, 255, 255, 1);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 25px;
+        letter-spacing: 0px;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .dark-data-copied-appear {
+        opacity: 1;
+        visibility: visible;
+        position: absolute;
+        top: -32px;
+        right: 0;
+        padding: 4px 12px 6px 12px;
+        border-radius: 50px;
+        background-color: rgba(0, 0, 0, 0.75);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+    .dark-data-copied-disappear {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        top: -22px;
+        right: 0;
+        padding: 4px 12px 6px 12px;
+        border-radius: 50px;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+}

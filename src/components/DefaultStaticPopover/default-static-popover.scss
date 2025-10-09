@@ -1,0 +1,114 @@
+.popover {
+    z-index: 6 !important;
+    opacity: 1;
+    position: relative;
+    display: inline-block;
+    margin: 0 10px;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    max-width: 276px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: start;
+    text-decoration: none;
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: normal;
+    word-break: normal;
+    word-spacing: normal;
+    white-space: normal;
+    line-break: auto;
+    font-size: 0.76562rem;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0px solid rgb(211, 223, 234);
+    box-shadow: 0px 16px 18px rgba(6, 10, 48, 0.1);
+    -webkit-filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+    font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+
+    .popover-arrow-top {
+        left: 50%;
+        margin-left: -5px !important;
+        bottom: calc((0.5rem + 1px) * -1);
+        position: absolute;
+        display: block;
+        width: 1rem;
+        height: 0.5rem;
+        margin: 0 0.3rem;
+    }
+
+    .popover-arrow-bottom {
+        left: 50%;
+        margin-left: -5px !important;
+        bottom: calc((0.5rem + 1px) * -1);
+        position: absolute;
+        display: block;
+        width: 1rem;
+        height: 0.5rem;
+        margin: 0 0.3rem;
+    }
+
+    .popover-arrow-array-bottom {
+        left: 50%;
+        margin-left: 3px !important;
+        bottom: calc((0.5rem + 1px) * -1);
+        position: absolute;
+        display: block;
+        width: 1rem;
+        height: 0.5rem;
+        margin: 0 0.3rem;
+    }
+
+    .popover-arrow-start {
+        top: 50%;
+        margin-top: -5px !important;
+        right: calc((0.5rem + 1px) * -1);
+        position: absolute;
+        display: block;
+        width: 0.5rem;
+        height: 1rem;
+        margin: 0.3rem 0;
+    }
+
+    .popover-arrow-end {
+        top: 50%;
+        margin-top: -5px !important;
+        left: calc((0.5rem + 1px) * -1);
+        position: absolute;
+        display: block;
+        width: 0.5rem;
+        height: 1rem;
+        margin: 0.3rem 0;
+    }
+
+    .popover-header {
+        // text-transform: capitalize;
+        font-size: 14px;
+        font-weight: 500;
+        color: #191621;
+        letter-spacing: 0.5px;
+        padding: 12px 15px;
+        background-color: #fff;
+        border-color: #e9ebfa;
+        margin-bottom: 0;
+        margin-top: 0;
+        border-bottom: 1px solid #ebebeb;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        line-height: 1.1;
+        &::before{display: none !important;}
+        &.nowrap-header{
+            white-space: nowrap;
+        }
+    }
+
+    .popover-body {
+        padding: 15px;
+        color: #6e7687;
+        border-radius: 8px;
+    }
+}

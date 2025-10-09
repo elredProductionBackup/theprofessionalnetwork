@@ -1,0 +1,117 @@
+.skils-chips-card-container {
+  flex: 1 1 0;
+  width: 0;
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  .skils-chips-card-content {
+    padding: 20px 13px 20px 20px;
+    height: 310px;
+    overflow: hidden;
+
+    .skills-chips-spinner-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20%;
+
+      .skills-chips-spinner-loader {
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    .skils-chips-card-header {
+      margin-bottom: 20px;
+      color: #000000;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+
+    @media (max-width: 1500px) {
+      .skils-chips-card-header {
+        height: 44px;
+        margin-bottom: 20px;
+        color: #000000;
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 22px;
+        letter-spacing: 0em;
+        text-align: left;
+      }
+    }
+
+    .no-skill-found-default-text {
+      margin-top: 25%;
+      font-size: 14px;
+      font-weight: 400;
+      text-align: center;
+      color: #262626;
+    }
+
+    .skills-chips-card-chips-container {
+      display: flex;
+      flex-wrap: wrap;
+      // gap: 10px;
+      max-height: 220px;
+      overflow-y: auto;
+      padding-right: 5px;
+
+      .skills-chips-card-chip {
+        color: #fff;
+        padding: 4px 14px 4px 14px;
+        border-radius: 5px;
+        background: #467fcf;
+        margin: 0 10px 14px 0;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0em;
+        text-align: left;
+        margin-right: 10px;
+      }
+    }
+
+    @media (max-width: 1500px) {
+      .skills-chips-card-chips-container {
+        display: flex;
+        flex-wrap: wrap;
+        //   gap: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        padding-right: 5px;
+        padding-bottom: 10px;
+
+        .skills-chips-card-chip {
+          color: #fff;
+          padding: 4px 14px 4px 14px;
+          border-radius: 5px;
+          background: #467fcf;
+          margin: 0 10px 14px 0;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 22px;
+          letter-spacing: 0em;
+          text-align: left;
+        }
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    /* Firefox */
+    @supports (-moz-appearance: none) {
+      scrollbar-width: thin; /* "auto", "thin", or "none" */
+    }
+  }
+}

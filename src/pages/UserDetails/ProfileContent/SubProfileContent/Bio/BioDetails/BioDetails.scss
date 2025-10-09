@@ -1,0 +1,120 @@
+$primaryColor: #736BD0;
+$secondaryColor: #FFF;
+
+.card-header-bio{
+    background-color: #fff;
+    display: flex;
+    padding: 15px 0px 15px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+    border-radius: 5px 5px 0 0;
+}
+.card-bio{
+    background-color: #fff;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+.awardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 19px;
+    flex-direction: row;
+    padding: 20px 0px 0px 20px;
+    // justify-content: center;
+
+    .no-awards-data-found {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0em;
+        text-align: center;
+        width: 100%;
+        margin-top: 211px;
+        padding-bottom: 277px;
+    }
+
+    .award-details-spinner-container {
+        display: flex;
+        height: 512px;
+        width: 100%;
+        align-items: center;
+        justify-content: center;;
+
+        .award-details-spinner-loader {
+            height: 30px;
+            width: 30px;
+            margin-top: -80px;
+        }
+    }
+}
+
+.awardIcons, .nonActiveAwardIcons {
+    width: 24px;
+    height: 24px;
+}
+
+.awardIcons {
+    color: $secondaryColor;
+}
+
+.nonActiveAwardIcons {
+    color: $primaryColor;
+}
+
+.awardButton, .notActiveAwardButton {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 5px;
+    border: 1px solid $primaryColor;
+    margin: 0 30px 0 0px;
+}
+
+.awardButton {
+    background: $primaryColor;
+    color: $secondaryColor;
+}
+
+.notActiveAwardButton {
+    background: $secondaryColor;
+    color: $primaryColor;
+}
+
+.awardTitle, .nonActiveAwardTitle {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+}
+
+.awardTitle {
+    color: $secondaryColor;
+}
+
+.nonActiveAwardTitle {
+    color: $primaryColor;
+}
+
+.badge-award, .nonactiveBadge {
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.28px;
+    padding: 2px 8px;
+    border-radius: 50px;
+    border: 1px solid;
+
+    &.badge-award {
+        color: $secondaryColor;
+        border-color: $secondaryColor;
+    }
+
+    &.nonactiveBadge {
+        color: $primaryColor;
+        border-color: $primaryColor;
+    }
+}
