@@ -14,7 +14,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const [sessionExpired, setSessionExpired] = useState(false);
 
-  console.log('PRETEST ENV: 26 DEC')
   return (
     <Auth.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       <LogoutPopUp.Provider value={{ logoutPop, setLogoutPop }}>
