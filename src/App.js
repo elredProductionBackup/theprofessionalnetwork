@@ -14,6 +14,8 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(undefined);
   const [sessionExpired, setSessionExpired] = useState(false);
 
+  console.log('adminportal-refactoring')
+
   return (
     <Auth.Provider value={{ isLoggedIn, setIsLoggedIn }}>
       <LogoutPopUp.Provider value={{ logoutPop, setLogoutPop }}>
