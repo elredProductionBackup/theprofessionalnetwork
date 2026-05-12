@@ -39,7 +39,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://professional-network-blue.vercel.app"),
+  metadataBase: new URL("https://theprofessionalnetwork.vercel.app"),
 
   title: "Professional Network",
   description: "A network of ambitious professionals",
@@ -47,12 +47,12 @@ export const metadata = {
   openGraph: {
     title: "Professional Network",
     description: "A network of ambitious professionals",
-    url: "https://professional-network-blue.vercel.app",
+    url: "https://theprofessionalnetwork.vercel.app",
     siteName: "Professional Network",
 
     images: [
       {
-        url: "https://professional-network-blue.vercel.app/assets/og.webp",
+        url: "https://theprofessionalnetwork.vercel.app/assets/og.webp",
         width: 1200,
         height: 630,
         alt: "Professional Network",
@@ -66,7 +66,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Professional Network",
     description: "A network of ambitious professionals",
-    images: ["https://professional-network-blue.vercel.app/assets/og.webp"],
+    images: ["https://theprofessionalnetwork.vercel.app/assets/og.webp"],
   },
 };
 
