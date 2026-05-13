@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Engineering Audit Report — theprofessionalnetwork</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --primary: #1a1a2e;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --yellow: #d97706;
+    --yellow-light: #fef3c7;
+    --green: #059669;
+    --green-light: #d1fae5;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-400: #9ca3af;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-800: #1f2937;
+    --gray-900: #111827;
+    --border: #e5e7eb;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: var(--gray-800);
+    background: #fff;
+  }
+
+  /* ── Cover Page ── */
+  .cover {
+    page-break-after: always;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 64px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%);
+    color: white;
+  }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 9pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 32px;
+    width: fit-content;
+  }
+  .cover h1 {
+    font-size: 32pt;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .cover h1 span { color: #93c5fd; }
+  .cover-sub {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 56px;
+    font-weight: 300;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 32px;
+  }
+  .cover-meta-item label {
+    display: block;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .cover-meta-item span {
+    font-size: 10pt;
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+  }
+  .cover-scores {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+  .score-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+  }
+  .score-card .score-val {
+    font-size: 22pt;
+    font-weight: 700;
+    color: #93c5fd;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .score-card .score-label {
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── Page Layout ── */
+  .page {
+    max-width: 100%;
+    padding: 48px 64px;
+  }
+
+  /* ── TOC ── */
+  .toc {
+    page-break-after: always;
+    padding: 48px 64px;
+  }
+  .toc h2 {
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 32px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc-counter;
+  }
+  .toc ol li {
+    counter-increment: toc-counter;
+    display: flex;
+    align-items: baseline;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--gray-200);
+    font-size: 10.5pt;
+  }
+  .toc ol li::before {
+    content: counter(toc-counter, decimal-leading-zero);
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 9pt;
+    margin-right: 14px;
+    min-width: 22px;
+  }
+  .toc ol li span { color: var(--gray-400); margin-left: auto; }
+
+  /* ── Section Headers ── */
+  .section-header {
+    page-break-before: always;
+    padding: 40px 64px 0;
+    margin-bottom: -16px;
+  }
+  .section-header:first-of-type { page-break-before: avoid; }
+
+  h1.section-title {
+    font-size: 20pt;
+    font-weight: 700;
+    color: var(--primary);
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent);
+    margin-bottom: 24px;
+  }
+  h2.sub-title {
+    font-size: 13pt;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin: 28px 0 12px;
+  }
+  h3.detail-title {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin: 20px 0 8px;
+  }
+
+  p { margin-bottom: 12px; color: var(--gray-700); }
+
+  /* ── Scorecard Table ── */
+  .scorecard {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .scorecard thead tr {
+    background: var(--primary);
+    color: white;
+  }
+  .scorecard thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 8.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .scorecard tbody tr { border-bottom: 1px solid var(--border); }
+  .scorecard tbody tr:last-child { border-bottom: none; }
+  .scorecard tbody tr:nth-child(even) { background: var(--gray-50); }
+  .scorecard tbody td {
+    padding: 9px 14px;
+    font-size: 10pt;
+    vertical-align: middle;
+  }
+  .scorecard tbody td:first-child { font-weight: 500; color: var(--gray-800); }
+
+  .score-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 10pt;
+  }
+  .score-bar {
+    display: inline-block;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--gray-200);
+    width: 80px;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+  }
+  .score-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    position: absolute;
+    left: 0; top: 0;
+  }
+  .fill-red { background: #ef4444; }
+  .fill-orange { background: #f97316; }
+  .fill-yellow { background: #eab308; }
+  .fill-blue { background: #3b82f6; }
+  .fill-green { background: #22c55e; }
+
+  /* ── Generic Table ── */
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 20px;
+    font-size: 9.5pt;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  table.data-table thead tr {
+    background: var(--gray-100);
+  }
+  table.data-table thead th {
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 8.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-600);
+    border-bottom: 1px solid var(--border);
+  }
+  table.data-table tbody tr { border-bottom: 1px solid var(--border); }
+  table.data-table tbody tr:last-child { border-bottom: none; }
+  table.data-table tbody tr:nth-child(even) { background: var(--gray-50); }
+  table.data-table tbody td { padding: 8px 12px; vertical-align: top; }
+
+  /* ── Severity Badges ── */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .badge-high { background: var(--red-light); color: var(--red); }
+  .badge-medium { background: var(--yellow-light); color: #92400e; }
+  .badge-low { background: var(--green-light); color: #065f46; }
+  .badge-critical { background: #fce7f3; color: #9d174d; }
+
+  /* ── Finding Cards ── */
+  .finding {
+    border-left: 4px solid var(--gray-200);
+    padding: 14px 16px;
+    margin: 12px 0;
+    background: var(--gray-50);
+    border-radius: 0 6px 6px 0;
+  }
+  .finding.high { border-left-color: var(--red); background: #fff8f8; }
+  .finding.medium { border-left-color: var(--yellow); background: #fffdf0; }
+  .finding.low { border-left-color: var(--green); background: #f0fdf8; }
+  .finding-title {
+    font-weight: 600;
+    font-size: 10.5pt;
+    color: var(--gray-900);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .finding p { margin-bottom: 6px; font-size: 9.5pt; }
+  .finding p:last-child { margin-bottom: 0; }
+  .finding .label {
+    font-size: 8pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-400);
+    margin-right: 4px;
+  }
+
+  /* ── Code ── */
+  code {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 8.5pt;
+    background: var(--gray-100);
+    padding: 1px 5px;
+    border-radius: 3px;
+    color: #be185d;
+  }
+  pre {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 14px 16px;
+    border-radius: 6px;
+    margin: 10px 0;
+    overflow-x: auto;
+    line-height: 1.5;
+  }
+
+  /* ── Callout Boxes ── */
+  .callout {
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 9.5pt;
+  }
+  .callout-info { border-color: #bfdbfe; background: #eff6ff; color: #1e40af; }
+  .callout-warn { border-color: #fde68a; background: #fffbeb; color: #92400e; }
+  .callout-danger { border-color: #fca5a5; background: #fff5f5; color: #991b1b; }
+  .callout strong { font-weight: 600; }
+
+  /* ── Priority Table ── */
+  .priority-section { margin: 20px 0; }
+  .priority-header {
+    font-size: 11pt;
+    font-weight: 700;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px 6px 0 0;
+    margin-bottom: 0;
+  }
+  .priority-immediate { background: var(--red); }
+  .priority-nearterm { background: #d97706; }
+  .priority-longterm { background: var(--accent); }
+
+  .priority-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9.5pt;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+  .priority-table thead tr { background: var(--gray-100); }
+  .priority-table thead th {
+    padding: 7px 12px;
+    text-align: left;
+    font-size: 8pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-600);
+    border-bottom: 1px solid var(--border);
+  }
+  .priority-table tbody tr { border-bottom: 1px solid var(--border); }
+  .priority-table tbody tr:last-child { border-bottom: none; }
+  .priority-table tbody tr:nth-child(even) { background: var(--gray-50); }
+  .priority-table tbody td { padding: 8px 12px; vertical-align: top; }
+  .priority-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--gray-700);
+    width: 20px;
+  }
+
+  /* ── Arch Diagram ── */
+  .arch-box {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    background: var(--gray-50);
+    margin: 14px 0;
+  }
+  .arch-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .arch-node {
+    flex: 1;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: white;
+    text-align: center;
+    font-size: 9pt;
+    font-weight: 500;
+  }
+  .arch-node.accent { border-color: var(--accent); background: var(--accent-light); color: var(--accent); }
+  .arch-node.red { border-color: #fca5a5; background: var(--red-light); color: var(--red); }
+  .arch-node.green { border-color: #6ee7b7; background: var(--green-light); color: #065f46; }
+
+  /* ── Strength Cards ── */
+  .strength-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .strength-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: white;
+  }
+  .strength-card h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .strength-card h4::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+  }
+  .strength-card p { font-size: 9pt; color: var(--gray-600); margin: 0; }
+
+  /* ── Tech Debt ── */
+  .debt-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 14px 0;
+  }
+  .debt-item {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: var(--gray-50);
+    font-size: 8.5pt;
+  }
+  .debt-item .debt-area {
+    font-weight: 600;
+    color: var(--gray-700);
+    font-size: 8pt;
+    margin-bottom: 4px;
+  }
+  .debt-item .debt-desc { color: var(--gray-600); }
+
+  /* ── Final Assessment ── */
+  .assessment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .assessment-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    background: var(--gray-50);
+  }
+  .assessment-card h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: var(--gray-800);
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .assessment-card p { font-size: 9pt; color: var(--gray-600); margin: 0; }
+
+  .verdict {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-size: 10pt;
+    font-weight: 500;
+  }
+  .verdict-no { background: var(--red-light); color: var(--red); border: 1px solid #fca5a5; }
+  .verdict-conditional { background: var(--yellow-light); color: #92400e; border: 1px solid #fde68a; }
+  .verdict-yes { background: var(--green-light); color: #065f46; border: 1px solid #6ee7b7; }
+  .verdict-icon { font-size: 14pt; }
+
+  /* ── Footer ── */
+  .report-footer {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 8pt;
+    color: var(--gray-400);
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section-header { page-break-before: always; }
+    .cover { page-break-after: always; min-height: auto; height: 297mm; }
+    .toc { page-break-after: always; }
+    .finding { page-break-inside: avoid; }
+    .priority-section { page-break-inside: avoid; }
+    @page { size: A4; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════
+     COVER PAGE
+════════════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-badge">Confidential · Engineering Audit</div>
+  <h1>Engineering Audit<br><span>theprofessionalnetwork</span></h1>
+  <div class="cover-sub">Full-Stack Architecture &amp; Production Readiness Review</div>
+
+  <div class="cover-scores">
+    <div class="score-card">
+      <div class="score-val">5.5</div>
+      <div class="score-label">Overall</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val">4.0</div>
+      <div class="score-label">Prod Ready</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val">3.5</div>
+      <div class="score-label">Security</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val">6.0</div>
+      <div class="score-label">Maintainability</div>
+    </div>
+    <div class="score-card">
+      <div class="score-val">1.0</div>
+      <div class="score-label">Testing</div>
+    </div>
+  </div>
+
+  <div class="cover-meta" style="margin-top:40px;">
+    <div class="cover-meta-item">
+      <label>Repository</label>
+      <span>theprofessionalnetwork</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Branch Audited</label>
+      <span>rayyan @ 63e0573</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Date</label>
+      <span>2026-05-13</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Stack</label>
+      <span>Next.js 16 · React 19 · Tailwind v4</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Applications</label>
+      <span>Marketing Site + SmartOffice Dashboard</span>
+    </div>
+    <div class="cover-meta-item">
+      <label>Auditor</label>
+      <span>Senior Full-Stack Architecture Review</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     TABLE OF CONTENTS
+════════════════════════════════════════════════ -->
+<div class="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li>Executive Summary <span>4</span></li>
+    <li>Engineering Scorecard <span>4</span></li>
+    <li>Repository &amp; Architecture Overview <span>5</span></li>
+    <li>Key Strengths <span>6</span></li>
+    <li>Security Findings <span>7</span></li>
+    <li>Performance &amp; Frontend Findings <span>8</span></li>
+    <li>Reliability &amp; Error Handling Findings <span>9</span></li>
+    <li>Code Quality &amp; Maintainability Findings <span>10</span></li>
+    <li>Testing &amp; Reliability Assessment <span>10</span></li>
+    <li>DevOps &amp; Deployment Assessment <span>11</span></li>
+    <li>Technical Debt Overview <span>11</span></li>
+    <li>Priority Action Table <span>12</span></li>
+    <li>Final Engineering Assessment <span>13</span></li>
+  </ol>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     1. EXECUTIVE SUMMARY
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">1 · Executive Summary</h1>
+</div>
+<div class="page">
+  <p>This audit covers the <strong>theprofessionalnetwork</strong> repository, which contains two distinct Next.js 16 applications co-located in a single git repository without formal monorepo tooling:</p>
+
+  <table class="data-table">
+    <thead><tr><th>Application</th><th>Path</th><th>Purpose</th><th>Stage</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Marketing Site</strong></td><td><code>/</code> (root)</td><td>Public-facing landing &amp; membership page</td><td>Early Prototype</td></tr>
+      <tr><td><strong>SmartOffice</strong></td><td><code>/smartoffice/</code></td><td>Internal event &amp; member management dashboard</td><td>Active Development</td></tr>
+    </tbody>
+  </table>
+
+  <p>The marketing site is a static, frontend-only application with no backend integration. Its primary user interaction — the membership application form — does not submit data anywhere. Several routes are unreachable due to a redirect component that forces all navigation to the homepage.</p>
+
+  <p>SmartOffice is a more mature application featuring email/OTP authentication, role-based access control, Redux state management, and a well-structured service layer. However, it has a critical SSRF vulnerability in its file download proxy, no server-side route protection, and no automated test coverage.</p>
+
+  <p>Both applications share zero automated tests, no CI/CD pipeline, and no error monitoring. The most urgent engineering investment is addressing the security vulnerabilities and adding server-side middleware authentication before expanding the user base.</p>
+
+  <h2 class="sub-title">2 · Engineering Scorecard</h2>
+  <table class="scorecard">
+    <thead>
+      <tr><th>Dimension</th><th>Score</th><th>Rating</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Overall Engineering</td>
+        <td><span class="score-pill">5.5 / 10 <span class="score-bar"><span class="score-bar-fill fill-yellow" style="width:55%"></span></span></span></td>
+        <td><span class="badge badge-medium">Fair</span></td>
+        <td>Solid foundations with significant gaps</td>
+      </tr>
+      <tr>
+        <td>Production Readiness</td>
+        <td><span class="score-pill">4.0 / 10 <span class="score-bar"><span class="score-bar-fill fill-orange" style="width:40%"></span></span></span></td>
+        <td><span class="badge badge-high">Poor</span></td>
+        <td>Multiple production blockers unresolved</td>
+      </tr>
+      <tr>
+        <td>Architecture</td>
+        <td><span class="score-pill">5.0 / 10 <span class="score-bar"><span class="score-bar-fill fill-yellow" style="width:50%"></span></span></span></td>
+        <td><span class="badge badge-medium">Fair</span></td>
+        <td>No monorepo tooling; no API layer in marketing site</td>
+      </tr>
+      <tr>
+        <td>Security</td>
+        <td><span class="score-pill">3.5 / 10 <span class="score-bar"><span class="score-bar-fill fill-red" style="width:35%"></span></span></span></td>
+        <td><span class="badge badge-high">Poor</span></td>
+        <td>Critical SSRF; localStorage JWT; no server-side auth</td>
+      </tr>
+      <tr>
+        <td>Performance</td>
+        <td><span class="score-pill">5.0 / 10 <span class="score-bar"><span class="score-bar-fill fill-yellow" style="width:50%"></span></span></span></td>
+        <td><span class="badge badge-medium">Fair</span></td>
+        <td>Dual animation libraries; no image optimization</td>
+      </tr>
+      <tr>
+        <td>Maintainability</td>
+        <td><span class="score-pill">6.0 / 10 <span class="score-bar"><span class="score-bar-fill fill-blue" style="width:60%"></span></span></span></td>
+        <td><span class="badge badge-medium">Adequate</span></td>
+        <td>SmartOffice well-structured; marketing site is not</td>
+      </tr>
+      <tr>
+        <td>Scalability</td>
+        <td><span class="score-pill">5.5 / 10 <span class="score-bar"><span class="score-bar-fill fill-yellow" style="width:55%"></span></span></span></td>
+        <td><span class="badge badge-medium">Fair</span></td>
+        <td>Service layer scales; auth layer does not</td>
+      </tr>
+      <tr>
+        <td>Testing &amp; Reliability</td>
+        <td><span class="score-pill">1.0 / 10 <span class="score-bar"><span class="score-bar-fill fill-red" style="width:10%"></span></span></span></td>
+        <td><span class="badge badge-high">Critical</span></td>
+        <td>Zero automated tests across both applications</td>
+      </tr>
+      <tr>
+        <td>DevOps &amp; Observability</td>
+        <td><span class="score-pill">2.0 / 10 <span class="score-bar"><span class="score-bar-fill fill-red" style="width:20%"></span></span></span></td>
+        <td><span class="badge badge-high">Poor</span></td>
+        <td>No CI/CD, monitoring, or error tracking</td>
+      </tr>
+      <tr>
+        <td>Developer Experience</td>
+        <td><span class="score-pill">5.5 / 10 <span class="score-bar"><span class="score-bar-fill fill-yellow" style="width:55%"></span></span></span></td>
+        <td><span class="badge badge-medium">Fair</span></td>
+        <td>Good local patterns; no shared tooling or docs</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     3. ARCHITECTURE
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">3 · Repository &amp; Architecture Overview</h1>
+</div>
+<div class="page">
+
+  <h2 class="sub-title">Repository Structure</h2>
+  <p>The repository contains two independent Next.js 16 applications with no shared packages, no workspace tooling, and no unified CI configuration.</p>
+
+  <div class="arch-box">
+    <div style="font-size:8pt;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:.07em;margin-bottom:14px;">Repository Layout</div>
+    <div class="arch-row">
+      <div class="arch-node accent" style="flex:none;width:100%;text-align:left;padding:12px 16px;">
+        <code style="background:none;color:inherit;font-size:8.5pt;">theprofessionalnetwork/ (git root)</code><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:16px;">├── app/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Marketing Site pages (Next.js App Router)</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:16px;">├── components/ &nbsp;&nbsp;&nbsp;&nbsp;← 23 React components (all static/animation)</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:16px;">├── data/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Hardcoded professors.js, faqdetails.js</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:16px;">├── package.json &nbsp;&nbsp;&nbsp;← Marketing site dependencies only</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:16px;">└── smartoffice/ &nbsp;&nbsp;&nbsp;← Separate Next.js app (independent npm install)</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:40px;">├── src/app/ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← Dashboard pages + 1 API route</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:40px;">├── src/store/ &nbsp;&nbsp;&nbsp;← Redux + Zustand state</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:40px;">├── src/services/ ← Axios service layer</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:40px;">├── src/hooks/ &nbsp;&nbsp;&nbsp;← Custom hooks</span><br>
+        <span style="font-size:8.5pt;color:var(--gray-600);margin-left:40px;">└── package.json &nbsp;← SmartOffice dependencies</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout callout-warn">
+    <strong>Pseudo-Monorepo Risk:</strong> Two independent Next.js apps share one git repository without Turborepo or pnpm workspaces. Shared code must be copy-pasted. Dependency versions (React 19, Next.js 16, Tailwind v4) are duplicated and can silently diverge. A unified CI pipeline requires custom scripting.
+  </div>
+
+  <h2 class="sub-title">Marketing Site Architecture</h2>
+  <p>The marketing site is a <strong>static, frontend-only application</strong> with no API routes, no backend, and no authentication. Notable architectural issues:</p>
+  <ul style="margin:8px 0 12px 20px;color:var(--gray-700);font-size:9.5pt;line-height:1.8;">
+    <li><strong>RefreshRedirect.jsx</strong> forces all non-home routes to <code>/</code> — <code>/about</code> and <code>/faqs</code> are unreachable on direct navigation or hard refresh.</li>
+    <li><strong>Custom window event bus</strong> (<code>window.dispatchEvent(new Event('openApplyPopup'))</code>) is used for popup coordination with no guarantee listeners are registered before dispatch.</li>
+    <li><strong>Application form is non-functional</strong> — form state is collected but never submitted to any endpoint.</li>
+    <li>Root <code>next.config.mjs</code> is entirely empty — no image domains, headers, or redirects configured.</li>
+  </ul>
+
+  <h2 class="sub-title">SmartOffice Architecture</h2>
+  <p>SmartOffice follows a clean layered architecture that separates concerns appropriately:</p>
+  <div class="arch-box">
+    <div class="arch-row">
+      <div class="arch-node">Browser</div>
+      <div style="display:flex;align-items:center;color:var(--gray-400);font-size:18pt;">→</div>
+      <div class="arch-node accent">Next.js 16 App Router<br><span style="font-size:8pt;font-weight:400;">Pages + Layout + 1 API route</span></div>
+      <div style="display:flex;align-items:center;color:var(--gray-400);font-size:18pt;">→</div>
+      <div class="arch-node green">External API<br><span style="font-size:8pt;font-weight:400;">pretest.elred.io</span></div>
+    </div>
+    <div class="arch-row" style="margin:0;">
+      <div class="arch-node">Redux Store<br><span style="font-size:8pt;font-weight:400;">Auth · Events · Actionables · Dashboard</span></div>
+      <div class="arch-node">Zustand Stores<br><span style="font-size:8pt;font-weight:400;">Modals · Loader · Datepicker</span></div>
+      <div class="arch-node">Axios Services<br><span style="font-size:8pt;font-weight:400;">auth · events · actionable · member</span></div>
+      <div class="arch-node">Custom Hooks<br><span style="font-size:8pt;font-weight:400;">useEventForm · useMembersData · usePagination</span></div>
+    </div>
+  </div>
+  <p>The mixed Redux (server data) + Zustand (UI state) strategy is appropriate. The primary architectural weakness is that authentication enforcement exists only at the client layer — there is no <code>middleware.js</code> running server-side to validate JWTs before rendering protected pages.</p>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     4. STRENGTHS
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">4 · Key Strengths</h1>
+</div>
+<div class="page">
+  <div class="strength-grid">
+    <div class="strength-card">
+      <h4>Service Layer Consistency</h4>
+      <p>All API calls route through a single Axios instance with a request interceptor for token attachment. Services follow a uniform pattern, making the API surface easy to navigate and extend.</p>
+    </div>
+    <div class="strength-card">
+      <h4>Optimistic UI Pattern</h4>
+      <p>Task creation uses a <code>tempId</code> strategy — items appear immediately in the UI, are replaced with server IDs on success, and rolled back on failure. A well-implemented pattern that improves perceived performance.</p>
+    </div>
+    <div class="strength-card">
+      <h4>Clean Separation of Concerns</h4>
+      <p>The <code>services/</code>, <code>hooks/</code>, <code>store/</code>, and <code>utils/</code> layering is applied consistently in SmartOffice. Business logic lives in dedicated utility modules rather than inside components.</p>
+    </div>
+    <div class="strength-card">
+      <h4>Custom Hooks</h4>
+      <p><code>useEventForm</code>, <code>useMembersData</code>, <code>useInfiniteScroll</code>, <code>usePagination</code>, and <code>useDebounce</code> are properly extracted. They encapsulate complex side-effect logic and keep components lean.</p>
+    </div>
+    <div class="strength-card">
+      <h4>Role-Based Access Control</h4>
+      <p>Admin-only routes (<code>/checklist</code>, <code>/members</code>, <code>/events</code>) are defined in a central <code>routeAccess.js</code> and enforced in <code>ProtectedRoute</code>. Non-admins receive a 404 rather than an error page.</p>
+    </div>
+    <div class="strength-card">
+      <h4>Modern Stack</h4>
+      <p>Both applications use Next.js 16 with React 19 and Tailwind CSS v4 — a forward-looking stack that avoids significant near-term upgrade debt. Formik + Yup provide structured form validation in SmartOffice.</p>
+    </div>
+    <div class="strength-card">
+      <h4>Pagination &amp; Infinite Scroll</h4>
+      <p>Members, events, and actionables all support server-side pagination with search and filter parameters. <code>useInfiniteScroll</code> and <code>usePagination</code> hooks are reused across features.</p>
+    </div>
+    <div class="strength-card">
+      <h4>Marketing Site Animation Quality</h4>
+      <p>The marketing site uses both Framer Motion and GSAP ScrollTrigger to deliver polished, scroll-driven animations. The visual quality is high and reflects a strong design sensibility.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     5. SECURITY
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">5 · Security Findings</h1>
+</div>
+<div class="page">
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> SSRF Vulnerability — Unauthenticated File Download Proxy</div>
+    <p><span class="label">File</span> <code>smartoffice/src/app/api/download/route.js</code></p>
+    <p><span class="label">Detail</span> The <code>/api/download?fileUrl=</code> endpoint fetches and streams any arbitrary URL with no authentication check, no authorization, and no URL validation. This is a Server-Side Request Forgery (SSRF) vector. An attacker who discovers this endpoint can use the server to fetch internal resources, probe internal networks, exfiltrate metadata, or bypass IP-based access controls.</p>
+    <p><span class="label">Fix</span> Validate <code>fileUrl</code> against an allowlist of trusted domains. Require a valid Bearer token. Add rate limiting.</p>
+    <pre>// Minimum viable fix
+const ALLOWED = ['res.cloudinary.com', 'assets-pretest.elred.io'];
+const url = new URL(fileUrl);
+if (!ALLOWED.includes(url.hostname)) {
+  return new NextResponse('Forbidden', { status: 403 });
+}</pre>
+  </div>
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> JWT Tokens Stored in localStorage</div>
+    <p><span class="label">Files</span> <code>smartoffice/src/store/auth/authSlice.js</code>, <code>smartoffice/src/services/axios.js</code>, <code>smartoffice/src/utils/auth.js</code></p>
+    <p><span class="label">Detail</span> Authentication tokens are read from and written to <code>localStorage</code>. Any JavaScript executing on the page — including third-party analytics or ad scripts — can read and exfiltrate these tokens. This is the canonical XSS → session hijack attack vector.</p>
+    <p><span class="label">Fix</span> Migrate to <code>httpOnly</code> cookies issued by the backend. This makes tokens inaccessible to JavaScript entirely. At minimum, implement a strict Content Security Policy to reduce XSS surface area.</p>
+  </div>
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> No Server-Side Route Protection</div>
+    <p><span class="label">File</span> <code>smartoffice/src/_components/ProtectedRoute.jsx</code></p>
+    <p><span class="label">Detail</span> All authentication and authorization enforcement exists in client-side React components. A user who manipulates Redux state in <code>localStorage</code> can bypass all UI route guards. The server will render any dashboard page for any request — there is no token validation before page delivery.</p>
+    <p><span class="label">Fix</span> Add a <code>middleware.js</code> at the SmartOffice root. Next.js Middleware runs on the server before any page renders and is the correct place for auth gates on <code>/dashboard/*</code>.</p>
+  </div>
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> dangerouslySetInnerHTML Without Sanitization</div>
+    <p><span class="label">File</span> <code>components/ProfessorPopup.jsx</code></p>
+    <p><span class="label">Detail</span> Professor <code>description</code> fields from <code>data/professors.js</code> are rendered with <code>dangerouslySetInnerHTML</code>. If this data is ever sourced from a database or CMS in the future, this becomes a stored XSS vector.</p>
+    <p><span class="label">Fix</span> Sanitize all HTML content with <code>DOMPurify</code> before rendering, or migrate to a Markdown renderer.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> No 401 / Session Expiry Handling</div>
+    <p><span class="label">File</span> <code>smartoffice/src/services/axios.js</code></p>
+    <p><span class="label">Detail</span> The Axios instance is configured with <code>validateStatus: () => true</code>, meaning 401, 403, and 5xx responses all "succeed" from Axios's perspective. A token expiry will not trigger a logout. Users remain stuck in a broken state with failing API calls.</p>
+    <p><span class="label">Fix</span> Add a response interceptor: on 401, call <code>logout()</code> and redirect to login. Handle 5xx with a global error toast.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> Hardcoded Application Identifier</div>
+    <p><span class="label">File</span> <code>smartoffice/src/app/Login.jsx</code></p>
+    <p><span class="label">Detail</span> <code>hashId: "elRed"</code> is hardcoded in login request payloads. This should be an environment variable to support multi-environment deployments without code changes.</p>
+    <p><span class="label">Fix</span> Move to <code>NEXT_PUBLIC_HASH_ID</code> environment variable.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     6. PERFORMANCE & FRONTEND
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">6 · Performance &amp; Frontend Findings</h1>
+</div>
+<div class="page">
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> Dual Animation Libraries — ~100–150KB Bundle Overhead</div>
+    <p><span class="label">Files</span> <code>components/Firstprinciple.jsx</code> (GSAP), all other animated components (Framer Motion)</p>
+    <p><span class="label">Detail</span> Both Framer Motion and GSAP are bundled in the marketing site. GSAP is used only for scroll-triggered stagger animations in a single component. The combined overhead adds 100–150KB to the client bundle on a page that is otherwise a static marketing site.</p>
+    <p><span class="label">Fix</span> Migrate the <code>Firstprinciple.jsx</code> GSAP animations to Framer Motion's <code>whileInView</code> and <code>staggerChildren</code> variants. Removes the GSAP dependency entirely.</p>
+  </div>
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> No Next.js &lt;Image&gt; Component in Marketing Site</div>
+    <p><span class="label">Detail</span> The marketing site uses raw <code>&lt;img&gt;</code> tags throughout, bypassing Next.js's built-in image optimization, lazy loading, format conversion (WebP/AVIF), and responsive sizing. Professor photos, team photos, and background images load at full resolution on all devices and viewports.</p>
+    <p><span class="label">Fix</span> Replace <code>&lt;img&gt;</code> with <code>next/image</code> for all static content. Expected 30–60% reduction in image payload on mobile viewports.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> No Caching Strategy in SmartOffice</div>
+    <p><span class="label">Detail</span> SmartOffice re-fetches member lists, event lists, and action items on every component mount. Navigating away and back triggers a full refetch. There is no <code>staleTime</code>, no <code>lastFetched</code> timestamp, and no cache invalidation strategy.</p>
+    <p><span class="label">Fix</span> Add TanStack Query with appropriate <code>staleTime</code> and <code>gcTime</code> per resource type, or implement Redux selector memoization with a <code>lastFetched</code> timestamp guard in thunks.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> Client-Side Auth Hydration Flash</div>
+    <p><span class="label">Detail</span> SmartOffice hydrates auth state from <code>localStorage</code> inside <code>useEffect</code>. There is an inevitable render cycle where <code>isAuthenticated</code> is <code>false</code> before hydration completes, potentially flashing the login page before redirecting to the dashboard.</p>
+    <p><span class="label">Fix</span> Server-side middleware (see Security §5) eliminates this entirely — auth is resolved before the page is rendered.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> moment.js Dependency (Maintenance Mode)</div>
+    <p><span class="label">File</span> <code>smartoffice/src/utils/dateUtils.js</code></p>
+    <p><span class="label">Detail</span> <code>moment@2.30.1</code> is in long-term maintenance mode and adds ~67KB to the bundle.</p>
+    <p><span class="label">Fix</span> Replace with <code>date-fns</code> (tree-shakeable, ~5KB per function used) or native <code>Intl.DateTimeFormat</code>.</p>
+  </div>
+
+  <div class="finding low">
+    <div class="finding-title"><span class="badge badge-low">Low</span> Inconsistent Page Metadata</div>
+    <p><span class="label">Detail</span> The marketing site's <code>/about</code> and <code>/faqs</code> pages have no custom <code>&lt;head&gt;</code> metadata. All pages share the root layout's default title and Open Graph image, which limits SEO effectiveness and social sharing appearance.</p>
+    <p><span class="label">Fix</span> Export a <code>generateMetadata</code> function from each page file.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     7. RELIABILITY
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">7 · Reliability &amp; Error Handling</h1>
+</div>
+<div class="page">
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> Non-Functional Application Form</div>
+    <p><span class="label">File</span> <code>components/ApplyPopup.jsx</code></p>
+    <p><span class="label">Detail</span> The membership application form collects name, email, phone, company, role, and years of experience — but the data is managed in local state and never submitted anywhere. There is no API endpoint, no email service call, no form backend integration. Users who apply receive no confirmation and no data is captured.</p>
+    <p><span class="label">Fix</span> Integrate with an email API (Resend, SendGrid) or a form backend (Formspree, Typeform) as a minimum viable solution. A single POST to a serverless function routing to email takes less than a day.</p>
+  </div>
+
+  <div class="finding high">
+    <div class="finding-title"><span class="badge badge-high">High</span> RefreshRedirect Breaks All Routes</div>
+    <p><span class="label">File</span> <code>components/RefreshRedirect.jsx</code></p>
+    <p><span class="label">Detail</span> <code>RefreshRedirect</code> is included in the root layout and uses <code>usePathname</code> to forcibly redirect any non-home route to <code>/</code>. This makes <code>/about</code> and <code>/faqs</code> entirely unreachable via direct navigation, shared links, or browser refresh. This is a production-blocking bug that also incurs an SEO penalty.</p>
+    <p><span class="label">Fix</span> Remove <code>RefreshRedirect.jsx</code> entirely. Implement a proper <code>not-found.js</code> page for 404 handling.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> Axios validateStatus Swallows All Errors</div>
+    <p><span class="label">File</span> <code>smartoffice/src/services/axios.js</code></p>
+    <p><span class="label">Detail</span> The Axios instance uses <code>validateStatus: () => true</code>, meaning all HTTP status codes including 401, 403, 404, and 500 are treated as resolved promises. Many Redux thunks do not inspect <code>response.status</code>, so API failures are silently swallowed. A 401 will not trigger a logout.</p>
+    <p><span class="label">Fix</span> Add a response interceptor that handles 401 (logout + redirect) and 5xx (global error toast) systematically. Reserve <code>validateStatus</code> only for specific endpoints that need non-2xx handling.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> Fragile Window Event Bus</div>
+    <p><span class="label">Files</span> <code>components/Navbar.jsx</code>, <code>components/Footer.jsx</code>, <code>components/JoinSection.jsx</code></p>
+    <p><span class="label">Detail</span> Popup coordination uses <code>window.dispatchEvent(new Event('openApplyPopup'))</code>. There is no guarantee event listeners are registered before dispatch, no error if a listener is missing, and no way to pass data through the event. The pattern is impossible to trace with standard debugging tools.</p>
+    <p><span class="label">Fix</span> Replace with React Context or a minimal Zustand store. Zustand is already a dependency in SmartOffice and would be a natural fit.</p>
+  </div>
+
+  <div class="finding low">
+    <div class="finding-title"><span class="badge badge-low">Low</span> No Error Boundaries</div>
+    <p><span class="label">Detail</span> Neither application has React Error Boundaries wrapping key sections. A runtime error in any client component will crash the entire page rather than degrading gracefully.</p>
+    <p><span class="label">Fix</span> Add <code>error.js</code> files at the route segment level in the Next.js App Router. These act as automatic error boundaries for their segment.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     8. CODE QUALITY
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">8 · Code Quality &amp; Maintainability</h1>
+</div>
+<div class="page">
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> No TypeScript</div>
+    <p><span class="label">Detail</span> Both applications use plain JavaScript with no type annotations. SmartOffice has complex Redux state shapes, nested event/actionable objects, and multi-parameter thunks — all of which benefit significantly from TypeScript. Type errors in these areas are currently discovered at runtime in production.</p>
+    <p><span class="label">Fix</span> Migrate SmartOffice to TypeScript incrementally. Start with <code>services/</code> files and Redux slice state interfaces — these yield the highest return on investment and unblock IDE autocompletion for the most complex parts of the codebase.</p>
+  </div>
+
+  <div class="finding medium">
+    <div class="finding-title"><span class="badge badge-medium">Medium</span> Content Hardcoded in Source Files</div>
+    <p><span class="label">Files</span> <code>data/professors.js</code>, <code>data/faqdetails.js</code></p>
+    <p><span class="label">Detail</span> Professor bios (including raw HTML), FAQ content, and team member data are all embedded in JavaScript files. Adding or updating a professor requires a code change and a full deployment. Some professor descriptions contain inline HTML strings.</p>
+    <p><span class="label">Fix</span> For the marketing site's current scale, a headless CMS (Contentful, Sanity) or a simple JSON file served from a CDN decouples content updates from deployments. At minimum, extract to a structured JSON format outside the component tree.</p>
+  </div>
+
+  <div class="finding low">
+    <div class="finding-title"><span class="badge badge-low">Low</span> README Not Customized</div>
+    <p><span class="label">Detail</span> Both <code>README.md</code> files contain the standard <code>create-next-app</code> boilerplate. There is no documentation for local setup, environment variables, deployment, or project structure. New developers must rely on tribal knowledge.</p>
+    <p><span class="label">Fix</span> Add a <code>.env.example</code> file (no values, just variable names) to SmartOffice immediately. This is a 5-minute fix with meaningful onboarding impact.</p>
+  </div>
+
+  <!-- ── Testing ── -->
+  <h1 class="section-title" style="margin-top:32px;">9 · Testing &amp; Reliability Assessment</h1>
+
+  <div class="callout callout-danger">
+    <strong>Zero automated tests exist across both applications.</strong> This is the single highest-risk engineering gap for production sustainability. Any significant refactor or feature addition carries unquantified regression risk.
+  </div>
+
+  <p>Specific untested areas with high business impact:</p>
+  <ul style="margin:8px 0 14px 20px;color:var(--gray-700);font-size:9.5pt;line-height:1.9;">
+    <li>Authentication flow (email input → OTP → dashboard redirect)</li>
+    <li>Optimistic update and rollback logic in <code>actionableSlice</code> thunks</li>
+    <li>Route protection logic in <code>ProtectedRoute</code> and <code>GuestRoute</code></li>
+    <li>Form validation in <code>smartoffice/src/utils/validation.js</code></li>
+    <li>Event payload construction in <code>eventPayload.js</code></li>
+    <li>Role-based route access enforcement</li>
+  </ul>
+
+  <h3 class="detail-title">Recommended Testing Roadmap</h3>
+  <table class="data-table">
+    <thead><tr><th>Priority</th><th>Test Type</th><th>Target</th><th>Tool</th><th>ROI</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Unit</td><td>validation.js, eventPayload.js, auth.js utilities</td><td>Vitest</td><td>High — no DOM required, fast to write</td></tr>
+      <tr><td>2</td><td>Integration</td><td>Redux thunks (actionable, events)</td><td>Vitest + MSW</td><td>High — protects optimistic update logic</td></tr>
+      <tr><td>3</td><td>Component</td><td>ProtectedRoute, GuestRoute auth redirect</td><td>React Testing Library</td><td>High — guards against auth regressions</td></tr>
+      <tr><td>4</td><td>E2E Smoke</td><td>Login → dashboard → create task flow</td><td>Playwright</td><td>Medium — catches integration failures</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     10. DEVOPS
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">10 · DevOps &amp; Deployment Assessment</h1>
+</div>
+<div class="page">
+  <div class="callout callout-warn">
+    <strong>No CI/CD pipeline exists.</strong> Deployments appear to be triggered manually via Vercel git integration. There are no GitHub Actions workflows, no <code>vercel.json</code>, and no automated quality gates before code reaches production.
+  </div>
+
+  <table class="data-table" style="margin-top:16px;">
+    <thead><tr><th>Gap</th><th>Impact</th><th>Effort to Fix</th></tr></thead>
+    <tbody>
+      <tr><td>No CI build validation</td><td>Broken builds can reach production undetected</td><td>Low (GitHub Actions template)</td></tr>
+      <tr><td>No lint enforcement in pipeline</td><td>ESLint is configured but not enforced</td><td>Low (add to CI workflow)</td></tr>
+      <tr><td>No preview deployment per PR</td><td>Reviewers cannot test changes before merge</td><td>Low (Vercel auto-preview)</td></tr>
+      <tr><td>No error monitoring</td><td>Production errors invisible without user reports</td><td>Low (Sentry free tier)</td></tr>
+      <tr><td>No structured logging</td><td>Server-side errors leave no trace</td><td>Medium</td></tr>
+      <tr><td>Single backend environment</td><td>No staging/production separation</td><td>Medium (backend dependency)</td></tr>
+      <tr><td>No <code>.env.example</code></td><td>New developer onboarding requires tribal knowledge</td><td>Trivial (5 minutes)</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="sub-title" style="margin-top:24px;">11 · Technical Debt Overview</h2>
+
+  <div class="debt-grid">
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-high">Critical</span></div>
+      <div class="debt-desc" style="margin-top:6px;">localStorage JWT → httpOnly cookies migration</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-high">Critical</span></div>
+      <div class="debt-desc" style="margin-top:6px;">SSRF fix in download proxy (1 hour)</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-high">High</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Zero test coverage — ongoing velocity risk</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-high">High</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Non-functional application form</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-high">High</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Broken route redirect (RefreshRedirect)</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-high">High</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Server-side middleware for auth</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-medium">Medium</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Monorepo tooling (Turborepo)</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-medium">Medium</span></div>
+      <div class="debt-desc" style="margin-top:6px;">TypeScript migration (SmartOffice services)</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-medium">Medium</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Next.js Image component adoption</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-medium">Medium</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Dual animation library consolidation</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-medium">Medium</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Caching strategy for SmartOffice data</div>
+    </div>
+    <div class="debt-item">
+      <div class="debt-area"><span class="badge badge-low">Low</span></div>
+      <div class="debt-desc" style="margin-top:6px;">Replace moment.js with date-fns</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     12. PRIORITY TABLE
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">12 · Priority Action Table</h1>
+</div>
+<div class="page">
+
+  <div class="priority-section">
+    <div class="priority-header priority-immediate">Immediate Priorities — Sprint 1</div>
+    <table class="priority-table">
+      <thead><tr><th>#</th><th>Action</th><th>File(s)</th><th>Risk if Deferred</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Secure <code>/api/download</code> — add domain allowlist + auth check</td>
+          <td><code>smartoffice/src/app/api/download/route.js</code></td>
+          <td>Active SSRF vulnerability accessible to any user</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Fix <code>RefreshRedirect</code> — remove component, add <code>not-found.js</code></td>
+          <td><code>components/RefreshRedirect.jsx</code></td>
+          <td>All <code>/about</code> and <code>/faqs</code> links broken</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Handle 401 in Axios interceptor → auto-logout + redirect</td>
+          <td><code>smartoffice/src/services/axios.js</code></td>
+          <td>Silent auth failures; users stuck in broken state</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Add Next.js Middleware for dashboard route auth</td>
+          <td>New: <code>smartoffice/src/middleware.js</code></td>
+          <td>Client-side auth bypass; server renders protected pages</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Wire up application form submission (email API or form backend)</td>
+          <td><code>components/ApplyPopup.jsx</code></td>
+          <td>Membership applications lost — core business flow broken</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Add <code>.env.example</code> with all required variable names</td>
+          <td>New: <code>smartoffice/.env.example</code></td>
+          <td>Onboarding friction; developers need tribal knowledge</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="priority-section" style="margin-top:20px;">
+    <div class="priority-header priority-nearterm">Near-Term Improvements — Sprint 2–4</div>
+    <table class="priority-table">
+      <thead><tr><th>#</th><th>Action</th><th>Benefit</th></tr></thead>
+      <tbody>
+        <tr><td>7</td><td>Add GitHub Actions CI (build + lint on every PR)</td><td>Catch broken builds before merge</td></tr>
+        <tr><td>8</td><td>Migrate JWT storage to <code>httpOnly</code> cookies</td><td>Eliminate XSS-based token theft vector</td></tr>
+        <tr><td>9</td><td>Sanitize <code>dangerouslySetInnerHTML</code> with DOMPurify</td><td>Prevent stored XSS as content source evolves</td></tr>
+        <tr><td>10</td><td>Replace <code>&lt;img&gt;</code> tags with <code>next/image</code> in marketing site</td><td>30–60% image payload reduction on mobile</td></tr>
+        <tr><td>11</td><td>Remove GSAP, consolidate animations on Framer Motion</td><td>~80KB bundle reduction; single animation dependency</td></tr>
+        <tr><td>12</td><td>Add unit tests for utility functions (Vitest)</td><td>First test coverage; fastest ROI; no DOM setup needed</td></tr>
+        <tr><td>13</td><td>Configure Vercel preview deployments per branch</td><td>Enable PR testing without local setup</td></tr>
+        <tr><td>14</td><td>Replace window event bus with Zustand in marketing site</td><td>Traceable popup state; eliminates silent dispatch failures</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="priority-section" style="margin-top:20px;">
+    <div class="priority-header priority-longterm">Long-Term Enhancements — Quarter 2+</div>
+    <table class="priority-table">
+      <thead><tr><th>#</th><th>Action</th><th>Benefit</th></tr></thead>
+      <tbody>
+        <tr><td>15</td><td>Adopt Turborepo for monorepo management</td><td>Shared packages, unified CI, dependency consistency</td></tr>
+        <tr><td>16</td><td>TypeScript migration (start with SmartOffice services layer)</td><td>Eliminate runtime type errors; improve IDE support and DX</td></tr>
+        <tr><td>17</td><td>Add E2E test suite for critical flows (Playwright)</td><td>Regression protection for auth and event creation</td></tr>
+        <tr><td>18</td><td>Integrate error monitoring (Sentry)</td><td>Visibility into production errors without user reports</td></tr>
+        <tr><td>19</td><td>Replace <code>moment.js</code> with <code>date-fns</code></td><td>~67KB bundle reduction; actively maintained library</td></tr>
+        <tr><td>20</td><td>CMS integration for marketing site content</td><td>Content updates without code deploys</td></tr>
+        <tr><td>21</td><td>Token refresh flow + structured session management</td><td>Better UX on long sessions; prepares for multi-tab logout</td></tr>
+        <tr><td>22</td><td>Add TanStack Query caching to SmartOffice data fetching</td><td>Reduces redundant network calls; improves perceived performance</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     13. FINAL ASSESSMENT
+════════════════════════════════════════════════ -->
+<div class="section-header">
+  <h1 class="section-title">13 · Final Engineering Assessment</h1>
+</div>
+<div class="page">
+
+  <div class="assessment-grid">
+    <div>
+      <h3 class="detail-title">Is the marketing site production-ready?</h3>
+      <div class="verdict verdict-no">
+        <span class="verdict-icon">✗</span>
+        <span>No — two immediate blockers: broken route redirect and non-functional application form.</span>
+      </div>
+      <p style="font-size:9.5pt;">These are not edge cases — they are the primary user interactions the site is built around. Both are fixable within a single sprint.</p>
+    </div>
+    <div>
+      <h3 class="detail-title">Is SmartOffice production-ready?</h3>
+      <div class="verdict verdict-conditional">
+        <span class="verdict-icon">~</span>
+        <span>Conditionally — core dashboard works, but SSRF vulnerability and missing server-side auth must be resolved first.</span>
+      </div>
+      <p style="font-size:9.5pt;">The application functions correctly for its intended use case. The security issues should be addressed before expanding the user base beyond a controlled internal audience.</p>
+    </div>
+    <div>
+      <h3 class="detail-title">Is the architecture scalable?</h3>
+      <div class="verdict verdict-conditional">
+        <span class="verdict-icon">~</span>
+        <span>SmartOffice's service/store/hooks layering scales well. The auth architecture does not.</span>
+      </div>
+      <p style="font-size:9.5pt;">The localStorage-based auth pattern does not support server-side rendering, token refresh, or multi-tab logout. This must be addressed before significant user growth. The marketing site has no scalability concerns at its current scope.</p>
+    </div>
+    <div>
+      <h3 class="detail-title">Are there major blockers?</h3>
+      <div class="verdict verdict-no">
+        <span class="verdict-icon">!</span>
+        <span>Two: SSRF vulnerability in download proxy, and zero test coverage.</span>
+      </div>
+      <p style="font-size:9.5pt;">The SSRF requires an immediate fix before exposing the application to untrusted users. Zero test coverage means any significant change carries unquantified regression risk — this compounds over time.</p>
+    </div>
+  </div>
+
+  <h2 class="sub-title" style="margin-top:28px;">Areas to Evolve Over Time</h2>
+
+  <table class="data-table">
+    <thead><tr><th>Area</th><th>Current State</th><th>Target State</th><th>Why It Matters</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>Authentication</strong></td>
+        <td>localStorage JWT, client-side guards</td>
+        <td>httpOnly cookies, Next.js Middleware</td>
+        <td>Highest-leverage security investment; also fixes UX flash</td>
+      </tr>
+      <tr>
+        <td><strong>Testing</strong></td>
+        <td>Zero coverage</td>
+        <td>Unit + integration + E2E smoke</td>
+        <td>Prevents regression as complexity grows; enables safe refactors</td>
+      </tr>
+      <tr>
+        <td><strong>Monorepo Tooling</strong></td>
+        <td>Two apps, one repo, no tooling</td>
+        <td>Turborepo with shared packages</td>
+        <td>Prevents dependency divergence; enables shared UI components</td>
+      </tr>
+      <tr>
+        <td><strong>Observability</strong></td>
+        <td>No monitoring, no logging</td>
+        <td>Sentry error tracking, structured logs</td>
+        <td>Production issues currently invisible without user reports</td>
+      </tr>
+      <tr>
+        <td><strong>Type Safety</strong></td>
+        <td>Plain JavaScript</td>
+        <td>TypeScript (services, store first)</td>
+        <td>SmartOffice's Redux shapes are complex; type errors cost more at scale</td>
+      </tr>
+      <tr>
+        <td><strong>Content Management</strong></td>
+        <td>Hardcoded in JS files</td>
+        <td>Headless CMS or structured JSON</td>
+        <td>Content updates currently require code deployments</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout callout-info" style="margin-top:24px;">
+    <strong>Summary:</strong> The engineering team has made sound architectural choices in SmartOffice's service and state management layers. The most impactful near-term investments are closing the security gaps (SSRF fix, server-side auth), fixing the two marketing site blockers, and establishing a testing baseline. These changes, achievable in two sprints, would substantially improve the production confidence and engineering sustainability of both applications.
+  </div>
+
+  <div class="report-footer">
+    <span>Engineering Audit Report · theprofessionalnetwork · Branch: rayyan</span>
+    <span>Commit: 63e0573 · 2026-05-13 · Confidential</span>
+  </div>
+</div>
+
+</body>
+</html>
