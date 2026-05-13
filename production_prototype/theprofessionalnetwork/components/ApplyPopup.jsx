@@ -172,27 +172,26 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
 
 const ApplyPopup = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const searchParams = useSearchParams();
-
-  // URL se popup open/close
+  // URL param check
   useEffect(() => {
-    const apply = searchParams.get("apply");
+    const params = new URLSearchParams(window.location.search);
+
+    const apply = params.get("apply");
 
     if (apply === "true") {
       setIsOpen(true);
     } else {
       setIsOpen(false);
     }
-  }, [searchParams]);
+  }, []);
 
-  // Custom event se bhi popup open ho sake
+  // Custom event support
   useEffect(() => {
     const handleOpen = () => setIsOpen(true);
 
@@ -244,7 +243,7 @@ const ApplyPopup = () => {
             onClick={() => setIsOpen(false)}
           />
 
-          {/* Popup */}
+          {/* Popup Content */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -261,12 +260,12 @@ const ApplyPopup = () => {
               backgroundPosition: "center",
             }}
           >
-            {/* Dark overlay */}
+            {/* Dark Overlay */}
             <div className="absolute inset-0 bg-black/70 z-0" />
 
-            {/* Content */}
+            {/* Inner Container */}
             <div className="relative z-10 w-full h-full border border-[#999999] rounded-[24px] p-[10px] md:p-[30px] flex flex-col overflow-hidden">
-              {/* Close button */}
+              {/* Close Button */}
               <button
                 onClick={() => setIsOpen(false)}
                 className="absolute top-6 right-6 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group hover:bg-white/30 transition-colors z-20 cursor-pointer"
@@ -274,6 +273,7 @@ const ApplyPopup = () => {
                 <RxCross2 className="text-white w-4 h-4 opacity-70" />
               </button>
 
+              {/* Form */}
               <form
                 onSubmit={(e) => e.preventDefault()}
                 className="flex-grow overflow-y-auto pr-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] flex flex-col"
@@ -285,7 +285,7 @@ const ApplyPopup = () => {
                   </h2>
                 </div>
 
-                {/* Form fields */}
+                {/* Form Fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
                   <FormField
                     label="First Name*"
@@ -297,7 +297,10 @@ const ApplyPopup = () => {
                     placeholder="Last Name"
                   />
 
-                  <FormField label="Email*" placeholder="Email" />
+                  <FormField
+                    label="Email*"
+                    placeholder="Email"
+                  />
 
                   <FormField
                     label="Linkedin Profile"
@@ -309,7 +312,10 @@ const ApplyPopup = () => {
                     placeholder="Contact Number"
                   />
 
-                  <FormField label="City*" placeholder="City" />
+                  <FormField
+                    label="City*"
+                    placeholder="City"
+                  />
 
                   <FormField
                     label="Company Name"
@@ -333,7 +339,7 @@ const ApplyPopup = () => {
                   />
                 </div>
 
-                {/* Submit */}
+                {/* Submit Button */}
                 <div className="mt-auto pt-12 flex justify-center">
                   <button
                     type="submit"
@@ -386,7 +392,7 @@ const FormField = ({
           value={value}
           onChange={(e) => !isSelect && setValue(e.target.value)}
           required={label.includes("*")}
-          className={`w-full text-[20px] font-inter-display font-medium outline-none placeholder:text-zinc-400 text-[16px] md:text-[20px] placeholder:text-[16px] md:placeholder:text-[18px] placeholder:font-light bg-transparent text-white leading-[130%] tracking-normal ${
+          className={`w-full font-inter-display font-medium outline-none text-[16px] md:text-[20px] placeholder:text-[16px] md:placeholder:text-[18px] placeholder:font-light placeholder:text-zinc-400 bg-transparent text-white leading-[130%] tracking-normal ${
             isSelect ? "cursor-pointer" : ""
           }`}
         />
