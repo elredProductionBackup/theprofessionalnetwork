@@ -42,7 +42,7 @@ const ComingSoonPopup = ({ eventName }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-[840px] md:h-[520px] h-auto bg-white rounded-[40px] p-8 md:p-12 flex flex-col items-center justify-center shadow-2xl z-10"
+            className="relative w-full max-w-[840px] md:h-[520px] h-[620px] bg-white rounded-[40px] p-8 md:p-12 flex flex-col items-center justify-center shadow-2xl z-10"
           >
             {/* Close Button */}
             <button 
