@@ -8,7 +8,8 @@ export default function RefreshRedirect() {
 
   useEffect(() => {
     if (pathname !== '/') {
-      router.replace('/');
+      const searchParams = window.location.search;
+      router.replace('/' + searchParams);
     }
     // Force scroll to top on every load/refresh
     window.scrollTo(0, 0);

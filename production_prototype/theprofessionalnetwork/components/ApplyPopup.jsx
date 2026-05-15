@@ -176,5 +176,12 @@ const FormField = ({ label, isSelect = false, type = "text", pattern, minLength 
     </div>
   );
 };
+const ApplyPopup = () => {
+  return (
+    <React.Suspense fallback={null}>
+      <ApplyPopupContent />
+    </React.Suspense>
+  );
+};
 
 export default ApplyPopup;
