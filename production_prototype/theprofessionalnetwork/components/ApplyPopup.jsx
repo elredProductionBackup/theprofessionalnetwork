@@ -175,8 +175,11 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
 
-const ApplyPopup = () => {
+import { useSearchParams } from 'next/navigation';
+
+const ApplyPopupContent = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const searchParams = useSearchParams();
 
   // URL param check
   useEffect(() => {
@@ -203,6 +206,12 @@ const ApplyPopup = () => {
   }, []);
 
   // Body scroll lock
+  useEffect(() => {
+    if (searchParams.get('apply') === 'true') {
+      setIsOpen(true);
+    }
+  }, [searchParams]);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -400,6 +409,13 @@ const FormField = ({ label, isSelect = false, type = "text", pattern, minLength 
         )}
       </div>
     </div>
+  );
+};
+const ApplyPopup = () => {
+  return (
+    <React.Suspense fallback={null}>
+      <ApplyPopupContent />
+    </React.Suspense>
   );
 };
 
