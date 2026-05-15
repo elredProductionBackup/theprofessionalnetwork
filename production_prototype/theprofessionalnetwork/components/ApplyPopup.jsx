@@ -3,14 +3,23 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RxCross2 } from "react-icons/rx";
 
-const ApplyPopup = () => {
+import { useSearchParams } from 'next/navigation';
+
+const ApplyPopupContent = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     const handleOpen = () => setIsOpen(true);
     window.addEventListener('openApplyPopup', handleOpen);
     return () => window.removeEventListener('openApplyPopup', handleOpen);
   }, []);
+
+  useEffect(() => {
+    if (searchParams.get('apply') === 'true') {
+      setIsOpen(true);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (isOpen) {
