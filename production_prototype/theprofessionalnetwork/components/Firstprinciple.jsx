@@ -11,11 +11,11 @@ const Firstprinciple = () => {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     let ctx = gsap.context(() => {
       // Animate internal elements with a stagger
       const elements = [".prof-logo", ".prof-name", ".prof-date", ".prof-topic", ".prof-school"];
-      
+
       elements.forEach((selector, i) => {
         gsap.from(selector, {
           scrollTrigger: {
@@ -37,7 +37,7 @@ const Firstprinciple = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="md:py-20 pb-[50px] px-4 bg-white font-inter flex flex-col items-center justify-center overflow-hidden ">
+    <section ref={sectionRef} className="md:py-20 pb-[50px] px-2 md:px-4 bg-white font-inter flex flex-col items-center justify-center overflow-hidden ">
       <div className="max-w-7xl mx-auto text-center mb-[50px]">
         <h2 className="text-[35px] md:text-[72px] mb-[30px] tracking-[-0.46px] ">
           <span className="italic font-medium text-[#656a6b] font-kepler text-[32px] md:text-[72px] leading-[110%] tracking-[-0.46px] align-middle">Deep</span>{""}
@@ -48,7 +48,7 @@ const Firstprinciple = () => {
           are being designed to be a collaborative feedback loop and not a monologue
         </p>
       </div>
-      <div className="max-w-[1100px] mx-auto flex flex-wrap justify-center gap-[15px]">
+      <div className="max-w-[1100px] w-full mx-auto flex flex-wrap justify-center gap-[10px] md:gap-[25px]">
         {professors.map((prof, index) => (
           <ProfessorCard key={index} prof={prof} onClick={() => setSelectedProf(prof)} />
         ))}
@@ -60,9 +60,9 @@ const Firstprinciple = () => {
         </p>
       </div>
 
-      <ProfessorPopup 
-        prof={selectedProf} 
-        onClose={() => setSelectedProf(null)} 
+      <ProfessorPopup
+        prof={selectedProf}
+        onClose={() => setSelectedProf(null)}
       />
     </section>
   );
@@ -71,7 +71,7 @@ const Firstprinciple = () => {
 const ProfessorCard = ({ prof, onClick }) => {
   return (
     <div 
-      className="prof-card flex flex-col bg-white border-[1px] md:border-[1.91px] border-[#E5E5E5] overflow-hidden w-[178px] h-[240px] md:w-[350px] md:h-[470px] cursor-pointer hover:shadow-lg transition-shadow group"
+      className="prof-card flex flex-col bg-white border-[1px] md:border-[1.91px] border-[#E5E5E5] overflow-hidden w-[calc(50%-10px)] max-w-[178px] h-auto min-h-[260px] md:w-full md:max-w-[350px] md:min-h-[490px] cursor-pointer hover:shadow-lg transition-shadow group"
       onClick={onClick}
     >
       {/* Image Area */}
@@ -101,19 +101,23 @@ const ProfessorCard = ({ prof, onClick }) => {
       </div>
 
       {/* Content Area */}
-      <div className="p-2 md:p-5 flex flex-col items-center text-center flex-grow">
-        <p className="prof-topic h-[44px] text-[11px] md:text-[18px] font-medium leading-[1.2] text-[#333333] mb-[5px] md:mb-[10px] font-inter-display tracking-[-0.5px]">
-          {prof.name === "Jonathan Levav" ? prof.topic.split(" by")[0] : prof.topic}
-        </p>
+      <div className="p-2 md:p-5 flex flex-col items-center text-center flex-grow bg-white w-full">
+        <div className="flex items-center justify-center h-auto w-full mb-[5px] md:mb-[10px]">
+          <p className="prof-topic text-[11px] md:text-[18px] font-medium leading-[1.2] text-[#333333] font-inter-display tracking-[-0.5px]">
+            {prof.name === "Jonathan Levav" ? prof.topic.split(" by")[0] : prof.topic}
+          </p>
+        </div>
         
         {/* School Info */}
-        <div className="prof-school mt-auto flex items-center gap-1 md:gap-3 font-inter">
+        <div className="prof-school mt-auto flex items-center justify-center gap-1 md:gap-3 font-inter w-full">
           <img
             src={prof.schoolLogo}
             alt=""
-            className="w-[15px] h-[15px] md:w-[30px] md:h-[30px] rounded-[2px] md:rounded-[4px] object-contain"
+            className="w-3.75 h-3.75 md:w-[30px] md:h-[30px] rounded-xs md:rounded-[4px] object-contain flex-shrink-0"
           />
-          <span className="text-[11px] md:text-[19px] leading-[140%] tracking-0 tracking-[-0.5px] font-regular text-black font-inter">{prof.school}</span>
+          <span className="text-[11px] md:text-[19px] leading-[1.2] tracking-[-0.5px] font-regular text-black font-inter text-left">
+            {prof.school}
+          </span>
         </div>
       </div>
     </div>

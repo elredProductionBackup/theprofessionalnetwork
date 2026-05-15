@@ -36,12 +36,12 @@ export const professors = [
     description: "Innovation is at the core of both the survival and growth of any business. Despite its importance, incumbent firms struggle to innovate for various reasons, including mindset, culture, inadequate processes, limited resources, or lack of tools (or a combination thereof). In this seminar, I will lead a discussion on the need to innovate, where to look for market opportunities, how to set up a well-oiled innovation process in your organization, and how a simple set of tools can turn your organization into an innovation machine (all that remains is execution!). Next, once you've developed your innovation, we will discuss principles of the psychology of decision making so that you can design decision environments that promote the selection of your innovation."
   },
   {
-    name: "Dave Weiner",
+    name: "Goutam Challagalla",
     date: "End October",
     topic: "Customer discovery",
-    school: "University California Berkeley",
-    image: "/professor-profile/dave.jpg",
-    schoolLogo: "/professor-school/dave-school.jpg",
+    school: "IMD Switzerland",
+    image: "/professor-profile/gautam.png",
+    schoolLogo: "/professor-school/gautam-school.png",
     linkedinLink: "https://www.linkedin.com/in/daveweiner2",
     schoolLink: "https://www.berkeley.edu/",
     location: "Mumbai",

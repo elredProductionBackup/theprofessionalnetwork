@@ -268,7 +268,7 @@ const ApplyPopup = () => {
               {/* Close Button */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute top-6 right-6 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group hover:bg-white/30 transition-colors z-20 cursor-pointer"
+                className="absolute md:top-6 md:right-6 top-3 right-3 w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group hover:bg-white/30 transition-colors z-20 cursor-pointer"
               >
                 <RxCross2 className="text-white w-4 h-4 opacity-70" />
               </button>
@@ -287,56 +287,16 @@ const ApplyPopup = () => {
 
                 {/* Form Fields */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
-                  <FormField
-                    label="First Name*"
-                    placeholder="First Name"
-                  />
-
-                  <FormField
-                    label="Last Name*"
-                    placeholder="Last Name"
-                  />
-
-                  <FormField
-                    label="Email*"
-                    placeholder="Email"
-                  />
-
-                  <FormField
-                    label="Linkedin Profile"
-                    placeholder="Linkedin Profile"
-                  />
-
-                  <FormField
-                    label="Contact Number*"
-                    placeholder="Contact Number"
-                  />
-
-                  <FormField
-                    label="City*"
-                    placeholder="City"
-                  />
-
-                  <FormField
-                    label="Company Name"
-                    placeholder="Company Name"
-                  />
-
-                  <FormField
-                    label="Your title in the company"
-                    placeholder="Your title in the company"
-                  />
-
-                  <FormField
-                    label="Years of cumulative experience*"
-                    placeholder="Years of cumulative experience"
-                    isSelect={true}
-                  />
-
-                  <FormField
-                    label="Company website"
-                    placeholder="Company website"
-                  />
+                  <FormField label="First Name*" placeholder="First Name" minLength={2} />
+                  <FormField label="Last Name*" placeholder="Last Name" minLength={2} />
+                  <FormField label="Email*" placeholder="Email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" />
+                  <FormField label="Linkedin Profile" placeholder="Linkedin Profile" type="url" pattern=".*linkedin.*" />
+                  <FormField label="Contact Number*" placeholder="Contact Number" type="tel" pattern="[0-9]*" />
+                  <FormField label="City*" placeholder="City" />
+                  <FormField label="Company Name" placeholder="Company Name" minLength={2} />
+                  <FormField label="Your title in the company" placeholder="Your title in the company" minLength={2} />
+                  <FormField label="Years of cumulative experience*" placeholder="Years of cumulative experience" isSelect={true} />
+                  <FormField label="Company website" placeholder="Company website" type="url" />
                 </div>
 
                 {/* Submit Button */}
@@ -357,11 +317,7 @@ const ApplyPopup = () => {
   );
 };
 
-const FormField = ({
-  label,
-  placeholder,
-  isSelect = false,
-}) => {
+const FormField = ({ label, isSelect = false, type = "text", pattern, minLength }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const [value, setValue] = React.useState("");
@@ -386,7 +342,9 @@ const FormField = ({
         onClick={() => isSelect && setIsOpen(!isOpen)}
       >
         <input
-          type="text"
+          type={type}
+          pattern={pattern}
+          minLength={minLength}
           onKeyDown={(e) => isSelect && e.preventDefault()}
           placeholder={placeholder}
           value={value}
