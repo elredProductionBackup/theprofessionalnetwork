@@ -44,7 +44,7 @@ export const professors = [
     schoolLogo: "/professor-school/gautam-school.png",
     linkedinLink: "https://www.linkedin.com/in/daveweiner2",
     schoolLink: "https://www.berkeley.edu/",
-    location: "Mumbai",
+    location: "HBS Classroom - Taj Lands End, Mumbai",
     description: ""
   },
   {
@@ -56,7 +56,7 @@ export const professors = [
     schoolLogo: "/professor-school/danny-school.jpg",
     linkedinLink: "https://www.linkedin.com/in/dannywarshay",
     schoolLink: "https://dannywarshay.com/",
-    location: "Mumbai",
+    location: "HBS Classroom - Taj Lands End, Mumbai",
     description: "See, Solve, Scale"
   }
 ];

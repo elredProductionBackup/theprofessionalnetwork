@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Geist, Geist_Mono, Inter, Inter_Tight, Playfair_Display } from "next/font/google";
 import localFont from "next/font/local";
 
@@ -80,7 +81,7 @@ export default function RootLayout({ children }) {
         className={`${brittany.variable} ${geistSans.variable} ${geistMono.variable} ${inter.variable} ${interTight.variable} ${playfair.variable} antialiased`}
         >
 
-        <RefreshRedirect/>
+        <Suspense fallback={null}><RefreshRedirect/></Suspense>
         <Navbar/>
         {children}
         <Footer/>
