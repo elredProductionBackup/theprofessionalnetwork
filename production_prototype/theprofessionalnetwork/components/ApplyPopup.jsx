@@ -326,7 +326,7 @@ const ApplyPopupContent = () => {
   );
 };
 
-const FormField = ({ label, isSelect = false, type = "text", pattern, minLength }) => {
+const FormField = ({ label, isSelect = false, type = "text", pattern, minLength, placeholder }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   const [value, setValue] = React.useState("");
